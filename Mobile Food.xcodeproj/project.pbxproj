@@ -1,0 +1,281 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CE59B9E3162CBBA30086A36E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE59B9E2162CBBA30086A36E /* UIKit.framework */; };
+		CE59B9E5162CBBA30086A36E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE59B9E4162CBBA30086A36E /* Foundation.framework */; };
+		CE59B9E7162CBBA30086A36E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE59B9E6162CBBA30086A36E /* CoreGraphics.framework */; };
+		CE59B9ED162CBBA30086A36E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE59B9EB162CBBA30086A36E /* InfoPlist.strings */; };
+		CE59B9EF162CBBA30086A36E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE59B9EE162CBBA30086A36E /* main.m */; };
+		CE59B9F3162CBBA30086A36E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE59B9F2162CBBA30086A36E /* AppDelegate.m */; };
+		CE59B9F6162CBBA30086A36E /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE59B9F4162CBBA30086A36E /* MainStoryboard.storyboard */; };
+		CE59B9F9162CBBA30086A36E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE59B9F8162CBBA30086A36E /* ViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CE59B9DE162CBBA30086A36E /* Mobile Food.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mobile Food.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE59B9E2162CBBA30086A36E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		CE59B9E4162CBBA30086A36E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CE59B9E6162CBBA30086A36E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		CE59B9EA162CBBA30086A36E /* Mobile Food-Info.plist */ = {isa = PBXFileReference; path = "Mobile Food-Info.plist"; sourceTree = "<group>"; };
+		CE59B9EC162CBBA30086A36E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CE59B9EE162CBBA30086A36E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CE59B9F0162CBBA30086A36E /* Mobile Food-Prefix.pch */ = {isa = PBXFileReference; path = "Mobile Food-Prefix.pch"; sourceTree = "<group>"; };
+		CE59B9F1162CBBA30086A36E /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		CE59B9F2162CBBA30086A36E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CE59B9F5162CBBA30086A36E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		CE59B9F7162CBBA30086A36E /* ViewController.h */ = {isa = PBXFileReference; path = ViewController.h; sourceTree = "<group>"; };
+		CE59B9F8162CBBA30086A36E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CE59B9DB162CBBA30086A36E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE59B9E3162CBBA30086A36E /* UIKit.framework in Frameworks */,
+				CE59B9E5162CBBA30086A36E /* Foundation.framework in Frameworks */,
+				CE59B9E7162CBBA30086A36E /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CE59B9D3162CBBA20086A36E = {
+			isa = PBXGroup;
+			children = (
+				CE59B9E8162CBBA30086A36E /* Mobile Food */,
+				CE59B9E1162CBBA30086A36E /* Frameworks */,
+				CE59B9DF162CBBA30086A36E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CE59B9DF162CBBA30086A36E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CE59B9DE162CBBA30086A36E /* Mobile Food.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CE59B9E1162CBBA30086A36E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE59B9E2162CBBA30086A36E /* UIKit.framework */,
+				CE59B9E4162CBBA30086A36E /* Foundation.framework */,
+				CE59B9E6162CBBA30086A36E /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CE59B9E8162CBBA30086A36E /* Mobile Food */ = {
+			isa = PBXGroup;
+			children = (
+				CE59B9F1162CBBA30086A36E /* AppDelegate.h */,
+				CE59B9F2162CBBA30086A36E /* AppDelegate.m */,
+				CE59B9F4162CBBA30086A36E /* MainStoryboard.storyboard */,
+				CE59B9F7162CBBA30086A36E /* ViewController.h */,
+				CE59B9F8162CBBA30086A36E /* ViewController.m */,
+				CE59B9E9162CBBA30086A36E /* Supporting Files */,
+			);
+			path = "Mobile Food";
+			sourceTree = "<group>";
+		};
+		CE59B9E9162CBBA30086A36E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CE59B9EA162CBBA30086A36E /* Mobile Food-Info.plist */,
+				CE59B9EB162CBBA30086A36E /* InfoPlist.strings */,
+				CE59B9EE162CBBA30086A36E /* main.m */,
+				CE59B9F0162CBBA30086A36E /* Mobile Food-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CE59B9DD162CBBA30086A36E /* Mobile Food */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE59B9FC162CBBA30086A36E /* Build configuration list for PBXNativeTarget "Mobile Food" */;
+			buildPhases = (
+				CE59B9DA162CBBA30086A36E /* Sources */,
+				CE59B9DB162CBBA30086A36E /* Frameworks */,
+				CE59B9DC162CBBA30086A36E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Mobile Food";
+			productName = "Mobile Food";
+			productReference = CE59B9DE162CBBA30086A36E /* Mobile Food.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CE59B9D5162CBBA20086A36E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = CE59B9D8162CBBA20086A36E /* Build configuration list for PBXProject "Mobile Food" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CE59B9D3162CBBA20086A36E;
+			productRefGroup = CE59B9DF162CBBA30086A36E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CE59B9DD162CBBA30086A36E /* Mobile Food */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CE59B9DC162CBBA30086A36E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE59B9ED162CBBA30086A36E /* InfoPlist.strings in Resources */,
+				CE59B9F6162CBBA30086A36E /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CE59B9DA162CBBA30086A36E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE59B9EF162CBBA30086A36E /* main.m in Sources */,
+				CE59B9F3162CBBA30086A36E /* AppDelegate.m in Sources */,
+				CE59B9F9162CBBA30086A36E /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CE59B9EB162CBBA30086A36E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE59B9EC162CBBA30086A36E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		CE59B9F4162CBBA30086A36E /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE59B9F5162CBBA30086A36E /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CE59B9FA162CBBA30086A36E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		CE59B9FB162CBBA30086A36E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CE59B9FD162CBBA30086A36E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Mobile Food/Mobile Food-Prefix.pch";
+				INFOPLIST_FILE = "Mobile Food/Mobile Food-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		CE59B9FE162CBBA30086A36E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Mobile Food/Mobile Food-Prefix.pch";
+				INFOPLIST_FILE = "Mobile Food/Mobile Food-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CE59B9D8162CBBA20086A36E /* Build configuration list for PBXProject "Mobile Food" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE59B9FA162CBBA30086A36E /* Debug */,
+				CE59B9FB162CBBA30086A36E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE59B9FC162CBBA30086A36E /* Build configuration list for PBXNativeTarget "Mobile Food" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE59B9FD162CBBA30086A36E /* Debug */,
+				CE59B9FE162CBBA30086A36E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CE59B9D5162CBBA20086A36E /* Project object */;
+}
