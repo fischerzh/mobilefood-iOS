@@ -14,13 +14,27 @@
 		CE59B9EF162CBBA30086A36E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE59B9EE162CBBA30086A36E /* main.m */; };
 		CE59B9F3162CBBA30086A36E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE59B9F2162CBBA30086A36E /* AppDelegate.m */; };
 		CE59B9F6162CBBA30086A36E /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE59B9F4162CBBA30086A36E /* MainStoryboard.storyboard */; };
-		CE59B9F9162CBBA30086A36E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE59B9F8162CBBA30086A36E /* ViewController.m */; };
+		CE59B9F9162CBBA30086A36E /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE59B9F8162CBBA30086A36E /* MainViewController.m */; };
+		CE73899A1655CF6B003AE3DC /* ProducerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7389991655CF6B003AE3DC /* ProducerViewController.m */; };
+		CE73899D1655CF81003AE3DC /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE73899C1655CF81003AE3DC /* FavoritesViewController.m */; };
+		CE7389A01655CF93003AE3DC /* CategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE73899F1655CF93003AE3DC /* CategoriesViewController.m */; };
+		CE7389A31655DDA5003AE3DC /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7389A21655DDA4003AE3DC /* TableViewController.m */; };
+		CE7389A61655E375003AE3DC /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7389A51655E375003AE3DC /* ScanViewController.m */; };
+		CE7F438116439A4800FA2ED5 /* Products.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7F438016439A4800FA2ED5 /* Products.m */; };
+		CE7F43841643A81C00FA2ED5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE7F43831643A81C00FA2ED5 /* CoreData.framework */; };
 		CE9DB7B1162D33BE00D2D214 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE9DB7AF162D33BE00D2D214 /* DataModel.xcdatamodeld */; };
 		CE9DB7D5162D5B5B00D2D214 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE9DB7CF162D5B5B00D2D214 /* libzbar.a */; };
 		CE9DB7D6162D5B5B00D2D214 /* zbar-back.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9DB7D1162D5B5B00D2D214 /* zbar-back.png */; };
 		CE9DB7D7162D5B5B00D2D214 /* zbar-help.html in Resources */ = {isa = PBXBuildFile; fileRef = CE9DB7D2162D5B5B00D2D214 /* zbar-help.html */; };
 		CE9DB7D8162D5B5B00D2D214 /* zbar-helpicons.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9DB7D3162D5B5B00D2D214 /* zbar-helpicons.png */; };
 		CE9DB7D9162D5B5B00D2D214 /* zbar-samples.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9DB7D4162D5B5B00D2D214 /* zbar-samples.png */; };
+		CEAEE920164EDD42007D74E6 /* ProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAEE91F164EDD42007D74E6 /* ProductViewController.m */; };
+		CEBC0A07162D8341002359C2 /* ScanView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBC0A06162D8341002359C2 /* ScanView.m */; };
+		CEBC0A0D162D89E7002359C2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEBC0A08162D89E7002359C2 /* AVFoundation.framework */; };
+		CEBC0A0E162D89E7002359C2 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEBC0A09162D89E7002359C2 /* CoreMedia.framework */; };
+		CEBC0A0F162D89E7002359C2 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEBC0A0A162D89E7002359C2 /* CoreVideo.framework */; };
+		CEBC0A10162D89E7002359C2 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CEBC0A0B162D89E7002359C2 /* libiconv.dylib */; };
+		CEBC0A11162D89E7002359C2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEBC0A0C162D89E7002359C2 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,8 +49,21 @@
 		CE59B9F1162CBBA30086A36E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CE59B9F2162CBBA30086A36E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		CE59B9F5162CBBA30086A36E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		CE59B9F7162CBBA30086A36E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		CE59B9F8162CBBA30086A36E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		CE59B9F7162CBBA30086A36E /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		CE59B9F8162CBBA30086A36E /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		CE7389981655CF6B003AE3DC /* ProducerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProducerViewController.h; sourceTree = "<group>"; };
+		CE7389991655CF6B003AE3DC /* ProducerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProducerViewController.m; sourceTree = "<group>"; };
+		CE73899B1655CF81003AE3DC /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
+		CE73899C1655CF81003AE3DC /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
+		CE73899E1655CF93003AE3DC /* CategoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesViewController.h; sourceTree = "<group>"; };
+		CE73899F1655CF93003AE3DC /* CategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesViewController.m; sourceTree = "<group>"; };
+		CE7389A11655DDA4003AE3DC /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		CE7389A21655DDA4003AE3DC /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		CE7389A41655E375003AE3DC /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanViewController.h; sourceTree = "<group>"; };
+		CE7389A51655E375003AE3DC /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
+		CE7F437F16439A4800FA2ED5 /* Products.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Products.h; sourceTree = "<group>"; };
+		CE7F438016439A4800FA2ED5 /* Products.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Products.m; sourceTree = "<group>"; };
+		CE7F43831643A81C00FA2ED5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CE9DB7B0162D33BE00D2D214 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		CE9DB7BB162D5B5B00D2D214 /* Decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decoder.h; sourceTree = "<group>"; };
 		CE9DB7BC162D5B5B00D2D214 /* Exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exception.h; sourceTree = "<group>"; };
@@ -63,6 +90,15 @@
 		CE9DB7D2162D5B5B00D2D214 /* zbar-help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "zbar-help.html"; sourceTree = "<group>"; };
 		CE9DB7D3162D5B5B00D2D214 /* zbar-helpicons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-helpicons.png"; sourceTree = "<group>"; };
 		CE9DB7D4162D5B5B00D2D214 /* zbar-samples.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-samples.png"; sourceTree = "<group>"; };
+		CEAEE91E164EDD42007D74E6 /* ProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductViewController.h; sourceTree = "<group>"; };
+		CEAEE91F164EDD42007D74E6 /* ProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductViewController.m; sourceTree = "<group>"; };
+		CEBC0A05162D8341002359C2 /* ScanView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanView.h; sourceTree = "<group>"; };
+		CEBC0A06162D8341002359C2 /* ScanView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanView.m; sourceTree = "<group>"; };
+		CEBC0A08162D89E7002359C2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		CEBC0A09162D89E7002359C2 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		CEBC0A0A162D89E7002359C2 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		CEBC0A0B162D89E7002359C2 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		CEBC0A0C162D89E7002359C2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +106,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE7F43841643A81C00FA2ED5 /* CoreData.framework in Frameworks */,
+				CEBC0A0D162D89E7002359C2 /* AVFoundation.framework in Frameworks */,
+				CEBC0A0E162D89E7002359C2 /* CoreMedia.framework in Frameworks */,
+				CEBC0A0F162D89E7002359C2 /* CoreVideo.framework in Frameworks */,
+				CEBC0A10162D89E7002359C2 /* libiconv.dylib in Frameworks */,
+				CEBC0A11162D89E7002359C2 /* QuartzCore.framework in Frameworks */,
 				CE59B9E3162CBBA30086A36E /* UIKit.framework in Frameworks */,
 				CE59B9E5162CBBA30086A36E /* Foundation.framework in Frameworks */,
 				CE59B9E7162CBBA30086A36E /* CoreGraphics.framework in Frameworks */,
@@ -83,6 +125,12 @@
 		CE59B9D3162CBBA20086A36E = {
 			isa = PBXGroup;
 			children = (
+				CE7F43831643A81C00FA2ED5 /* CoreData.framework */,
+				CEBC0A08162D89E7002359C2 /* AVFoundation.framework */,
+				CEBC0A09162D89E7002359C2 /* CoreMedia.framework */,
+				CEBC0A0A162D89E7002359C2 /* CoreVideo.framework */,
+				CEBC0A0B162D89E7002359C2 /* libiconv.dylib */,
+				CEBC0A0C162D89E7002359C2 /* QuartzCore.framework */,
 				CE9DB7B7162D5B5B00D2D214 /* ZBarSDK */,
 				CE59B9E8162CBBA30086A36E /* Mobile Food */,
 				CE59B9E1162CBBA30086A36E /* Frameworks */,
@@ -114,10 +162,26 @@
 				CE59B9F1162CBBA30086A36E /* AppDelegate.h */,
 				CE59B9F2162CBBA30086A36E /* AppDelegate.m */,
 				CE59B9F4162CBBA30086A36E /* MainStoryboard.storyboard */,
+				CE7389981655CF6B003AE3DC /* ProducerViewController.h */,
+				CE7389991655CF6B003AE3DC /* ProducerViewController.m */,
+				CE7389A11655DDA4003AE3DC /* TableViewController.h */,
+				CE7389A21655DDA4003AE3DC /* TableViewController.m */,
+				CE73899B1655CF81003AE3DC /* FavoritesViewController.h */,
+				CE73899C1655CF81003AE3DC /* FavoritesViewController.m */,
+				CE73899E1655CF93003AE3DC /* CategoriesViewController.h */,
+				CE73899F1655CF93003AE3DC /* CategoriesViewController.m */,
 				CE9DB7AF162D33BE00D2D214 /* DataModel.xcdatamodeld */,
-				CE59B9F7162CBBA30086A36E /* ViewController.h */,
-				CE59B9F8162CBBA30086A36E /* ViewController.m */,
+				CE7F437F16439A4800FA2ED5 /* Products.h */,
+				CE7F438016439A4800FA2ED5 /* Products.m */,
+				CEAEE91E164EDD42007D74E6 /* ProductViewController.h */,
+				CEAEE91F164EDD42007D74E6 /* ProductViewController.m */,
+				CE59B9F7162CBBA30086A36E /* MainViewController.h */,
+				CE59B9F8162CBBA30086A36E /* MainViewController.m */,
 				CE59B9E9162CBBA30086A36E /* Supporting Files */,
+				CEBC0A05162D8341002359C2 /* ScanView.h */,
+				CE7389A41655E375003AE3DC /* ScanViewController.h */,
+				CE7389A51655E375003AE3DC /* ScanViewController.m */,
+				CEBC0A06162D8341002359C2 /* ScanView.m */,
 			);
 			path = "Mobile Food";
 			sourceTree = "<group>";
@@ -265,8 +329,16 @@
 			files = (
 				CE59B9EF162CBBA30086A36E /* main.m in Sources */,
 				CE59B9F3162CBBA30086A36E /* AppDelegate.m in Sources */,
-				CE59B9F9162CBBA30086A36E /* ViewController.m in Sources */,
+				CE59B9F9162CBBA30086A36E /* MainViewController.m in Sources */,
 				CE9DB7B1162D33BE00D2D214 /* DataModel.xcdatamodeld in Sources */,
+				CEBC0A07162D8341002359C2 /* ScanView.m in Sources */,
+				CE7F438116439A4800FA2ED5 /* Products.m in Sources */,
+				CEAEE920164EDD42007D74E6 /* ProductViewController.m in Sources */,
+				CE73899A1655CF6B003AE3DC /* ProducerViewController.m in Sources */,
+				CE73899D1655CF81003AE3DC /* FavoritesViewController.m in Sources */,
+				CE7389A01655CF93003AE3DC /* CategoriesViewController.m in Sources */,
+				CE7389A31655DDA5003AE3DC /* TableViewController.m in Sources */,
+				CE7389A61655E375003AE3DC /* ScanViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +418,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ZBarSDK\"",
+					"\"/Volumes/VMware Shared Folders/Downloads/Mobile Food/ZBarSDK\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -361,6 +434,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ZBarSDK\"",
+					"\"/Volumes/VMware Shared Folders/Downloads/Mobile Food/ZBarSDK\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
