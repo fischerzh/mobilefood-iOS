@@ -11,7 +11,7 @@
 #import "MainViewController.h"
 
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-#define kosherListURL [NSURL URLWithString:@"http://www.uitiwg.ch/products_contents.json"] //"http://api.kivaws.org/v1/loans/search.json?status=fundraising"] //
+#define kosherListURL [NSURL URLWithString:@"http://www.uitiwg.ch/Produkt_Live.json"] //"http://www.uitiwg.ch/products_contents.json"] //"http://api.kivaws.org/v1/loans/search.json?status=fundraising"] //
 
 @implementation AppDelegate
 
@@ -62,7 +62,9 @@
     
     
     dispatch_async(kBgQueue, ^{
-        NSData* data = [NSData dataWithContentsOfURL:kosherListURL];
+        NSString* raw = [NSString stringWithContentsOfURL:kosherListURL];
+        NSData* data = [raw dataUsingEncoding:NSUTF8StringEncoding];
+        NSLog(@"raw data: %@ end rawData", data);
         [self performSelectorOnMainThread:@selector(fetchedData:) withObject:data waitUntilDone:YES];
     });
     return YES;
@@ -70,17 +72,16 @@
 
 - (void)fetchedData:(NSData *)responseData {
     //parse out the json data
-    NSError* error;
-    NSArray *array = [NSJSONSerialization 
+    NSError* error = nil;
+    NSDictionary *array = [NSJSONSerialization 
                           JSONObjectWithData:responseData //1
-                          
                           options:kNilOptions 
                           error:&error];
-    
-    NSDictionary *json = [array objectAtIndex:0];
-    
-    //NSLog(@"after serialization...: %@", json);
-    dataBase = [json objectForKey:@"products"]; //2
+    NSLog(@"serialized data: %@ end serialize", array);
+    if(!error){
+        NSLog(@"SerializationError: %@", error);
+    }
+    dataBase = [array objectForKey:@"products"]; //2
     NSSortDescriptor *descriptor =
     [[NSSortDescriptor alloc] initWithKey:@"name"
                               ascending:YES 
@@ -89,31 +90,6 @@
     productArray = [dataBase sortedArrayUsingDescriptors:descriptors];
     categoryArray = [self createCategoryDictionary:productArray];
     producerArray = [self createProducerDictionary:productArray];
-    
-//    NSMutableArray* categoryDictionary = [[NSMutableArray alloc] init];
-//    for (int i=0; i<[categoryArray count]; i++) {
-//        NSMutableArray* keys = [[NSMutableArray alloc] initWithCapacity: 2];
-//        [keys addObject:@"name"];
-//        [keys addObject:@"products"];
-//        NSMutableArray* values = [[NSMutableArray alloc] initWithCapacity:2];
-//        
-//        NSPredicate *resultPredicate = [NSPredicate
-//                                        predicateWithFormat:@"category contains[cd] %@",[categoryArray objectAtIndex:i]];
-//        
-//        [values addObject:[categoryArray objectAtIndex:i]];
-//        [values addObject:[dataBase filteredArrayUsingPredicate:resultPredicate]];
-//        
-//        NSMutableDictionary* newDictionary = [NSMutableDictionary dictionaryWithObjects:values forKeys:keys];
-//        
-//        
-//        NSLog(@"New CategoryDict: %@", newDictionary);
-//        
-//        
-//        [categoryDictionary addObject:newDictionary];
-//    }
-//    
-//    
-//    NSLog(@"All producer Dict: %@ End Category", categoryDictionary);
     
     //generate Dictionary for Producer and Category
     int numberOfProducts = [dataBase count];

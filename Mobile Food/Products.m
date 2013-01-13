@@ -2,8 +2,8 @@
 //  Products.m
 //  Mobile Food
 //
-//  Created by Lion User on 02.11.12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Lion User on 13.01.13.
+//  Copyright (c) 2013 __MyCompanyName__. All rights reserved.
 //
 
 #import "Products.h"
@@ -11,13 +11,16 @@
 
 @implementation Products
 
-@dynamic distributor;
+@dynamic category;
+@dynamic contents;
 @dynamic ean;
-@dynamic family;
-@dynamic ingredients;
-@dynamic kosher;
+@dynamic id;
 @dynamic name;
-@dynamic package;
-@dynamic remarks;
+@dynamic producer;
+@dynamic packaging;
+@dynamic controller;
+@dynamic comment;
+@dynamic chavalakum;
+@dynamic parve;
 
 @end

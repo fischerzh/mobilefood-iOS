@@ -19,12 +19,12 @@
 		CE59B9F6162CBBA30086A36E /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE59B9F4162CBBA30086A36E /* MainStoryboard.storyboard */; };
 		CE59B9F9162CBBA30086A36E /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE59B9F8162CBBA30086A36E /* MainViewController.m */; };
 		CE5AD45D1667BADD0010F5EF /* communities.json in Resources */ = {isa = PBXBuildFile; fileRef = CE5AD45C1667BADD0010F5EF /* communities.json */; };
+		CE60CD1416A364810062EF2B /* Products.m in Sources */ = {isa = PBXBuildFile; fileRef = CE60CD1316A364810062EF2B /* Products.m */; };
 		CE73899A1655CF6B003AE3DC /* ProducerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7389991655CF6B003AE3DC /* ProducerViewController.m */; };
 		CE73899D1655CF81003AE3DC /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE73899C1655CF81003AE3DC /* FavoritesViewController.m */; };
 		CE7389A01655CF93003AE3DC /* CategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE73899F1655CF93003AE3DC /* CategoriesViewController.m */; };
 		CE7389A61655E375003AE3DC /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7389A51655E375003AE3DC /* ScanViewController.m */; };
 		CE7B845B167A1283005B5A3E /* CategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7B845A167A1283005B5A3E /* CategoryViewController.m */; };
-		CE7F438116439A4800FA2ED5 /* Products.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7F438016439A4800FA2ED5 /* Products.m */; };
 		CE7F43841643A81C00FA2ED5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE7F43831643A81C00FA2ED5 /* CoreData.framework */; };
 		CE9DB7B1162D33BE00D2D214 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE9DB7AF162D33BE00D2D214 /* DataModel.xcdatamodeld */; };
 		CE9DB7D5162D5B5B00D2D214 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE9DB7CF162D5B5B00D2D214 /* libzbar.a */; };
@@ -62,6 +62,8 @@
 		CE59B9F7162CBBA30086A36E /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		CE59B9F8162CBBA30086A36E /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		CE5AD45C1667BADD0010F5EF /* communities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = communities.json; sourceTree = "<group>"; };
+		CE60CD1216A364810062EF2B /* Products.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Products.h; sourceTree = "<group>"; };
+		CE60CD1316A364810062EF2B /* Products.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Products.m; sourceTree = "<group>"; };
 		CE7389981655CF6B003AE3DC /* ProducerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProducerViewController.h; sourceTree = "<group>"; };
 		CE7389991655CF6B003AE3DC /* ProducerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProducerViewController.m; sourceTree = "<group>"; };
 		CE73899B1655CF81003AE3DC /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
@@ -72,8 +74,6 @@
 		CE7389A51655E375003AE3DC /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
 		CE7B8459167A1283005B5A3E /* CategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoryViewController.h; path = ../CategoryViewController.h; sourceTree = "<group>"; };
 		CE7B845A167A1283005B5A3E /* CategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoryViewController.m; path = ../CategoryViewController.m; sourceTree = "<group>"; };
-		CE7F437F16439A4800FA2ED5 /* Products.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Products.h; sourceTree = "<group>"; };
-		CE7F438016439A4800FA2ED5 /* Products.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Products.m; sourceTree = "<group>"; };
 		CE7F43831643A81C00FA2ED5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CE9DB7B0162D33BE00D2D214 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		CE9DB7BB162D5B5B00D2D214 /* Decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decoder.h; sourceTree = "<group>"; };
@@ -188,8 +188,8 @@
 				CE73899E1655CF93003AE3DC /* CategoriesViewController.h */,
 				CE73899F1655CF93003AE3DC /* CategoriesViewController.m */,
 				CE9DB7AF162D33BE00D2D214 /* DataModel.xcdatamodeld */,
-				CE7F437F16439A4800FA2ED5 /* Products.h */,
-				CE7F438016439A4800FA2ED5 /* Products.m */,
+				CE60CD1216A364810062EF2B /* Products.h */,
+				CE60CD1316A364810062EF2B /* Products.m */,
 				CEAEE91E164EDD42007D74E6 /* ProductViewController.h */,
 				CEAEE91F164EDD42007D74E6 /* ProductViewController.m */,
 				CE59B9F7162CBBA30086A36E /* MainViewController.h */,
@@ -349,7 +349,6 @@
 				CE59B9F9162CBBA30086A36E /* MainViewController.m in Sources */,
 				CE9DB7B1162D33BE00D2D214 /* DataModel.xcdatamodeld in Sources */,
 				CEBC0A07162D8341002359C2 /* ScanView.m in Sources */,
-				CE7F438116439A4800FA2ED5 /* Products.m in Sources */,
 				CEAEE920164EDD42007D74E6 /* ProductViewController.m in Sources */,
 				CE73899A1655CF6B003AE3DC /* ProducerViewController.m in Sources */,
 				CE73899D1655CF81003AE3DC /* FavoritesViewController.m in Sources */,
@@ -359,6 +358,7 @@
 				CE38AAD716718ABA00E1CA5C /* TableViewController.m in Sources */,
 				CE38AB171672A4BE00E1CA5C /* DetailViewController.m in Sources */,
 				CE7B845B167A1283005B5A3E /* CategoryViewController.m in Sources */,
+				CE60CD1416A364810062EF2B /* Products.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

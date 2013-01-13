@@ -7,10 +7,15 @@
     </entity>
     <entity name="Products" representedClassName="Products" syncable="YES">
         <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="chavalakum" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="contents" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="controller" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="ean" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="packaging" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="parve" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="producer" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
