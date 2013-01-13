@@ -5,6 +5,9 @@
 //  Created by Lion User on 10.11.12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
+#define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+#define kosherListURL [NSURL URLWithString:@"http://api.kivaws.org/v1/loans/search.json?status=fundraising"] //"http://www.uitiwg.ch/products_contents.json"] //
+
 
 #import "Products.h"
 #import "ProductViewController.h"
@@ -19,19 +22,15 @@
 
 @synthesize managedObjectContext;
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
+    /*dispatch_async(kBgQueue, ^{
+        NSData* data = [NSData dataWithContentsOfURL:kosherListURL];
+        [self performSelectorOnMainThread:@selector(fetchedData:) withObject:data waitUntilDone:YES];
+    });
+    NSLog(@"dispatched...");*/
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -46,49 +45,31 @@
     // e.g. self.myOutlet = nil;
 }
 
+- (void)fetchedData:(NSData *)responseData {
+    //parse out the json data
+    NSString* string = [responseData description];
+    NSLog(@"String %@", string);
+    NSLog(@"parse json");
+    NSError* error;
+    NSDictionary* json = [NSJSONSerialization 
+                          JSONObjectWithData:responseData //1
+                          
+                          options:kNilOptions 
+                          error:&error];
+    //NSLog(@"after serialization...: %@", json);
+    NSArray* latestLoans = [json objectForKey:@"loans"]; //2
+    
+    NSLog(@"products... %@", latestLoans);
+    //NSLog(@"products: %@", latestLoans); //3
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (IBAction)switchToScanner:(id)sender {
-    UINavigationController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"Scanner"];
-    [self presentModalViewController:controller animated:NO];
-}
-
-- (IBAction)switchView:(id)sender {
-    UINavigationController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"TabControll"];
-    [self presentModalViewController:controller animated:NO];
-}
-
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    NSLog(@"products.count: %@", [products count]);
-    return [products count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    // Configure the cell...
-    Products *prod = [products objectAtIndex:indexPath.row];
-    cell.textLabel.text = prod.name;
-    cell.detailTextLabel.text = prod.distributor;
-    return cell;
-}
 
 /*
 // Override to support conditional editing of the table view.

@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11E53" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Products" representedClassName="Products" syncable="YES">
-        <attribute name="distributor" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="ean" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="family" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="ingredients" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="kosher" optional="YES" attributeType="Boolean" syncable="YES"/>
+    <entity name="Communities" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="package" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="remarks" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Products" representedClassName="Products" syncable="YES">
+        <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="contents" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ean" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="producer" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Products" positionX="160" positionY="192" width="128" height="165"/>
+        <element name="Communities" positionX="-5006" positionY="-1260" width="128" height="90"/>
+        <element name="Products" positionX="-4860" positionY="-1269" width="128" height="135"/>
     </elements>
 </model>

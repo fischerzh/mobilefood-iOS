@@ -10,6 +10,4 @@
 
 @interface MainViewController : UIViewController
 
-@property (nonatomic, strong) NSManagedObjectContext* managedObject;
-
 @end

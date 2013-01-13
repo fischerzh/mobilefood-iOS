@@ -10,47 +10,139 @@
 #import "Products.h"
 #import "MainViewController.h"
 
+#define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+#define kosherListURL [NSURL URLWithString:@"http://www.uitiwg.ch/products_contents.json"] //"http://api.kivaws.org/v1/loans/search.json?status=fundraising"] //
+
 @implementation AppDelegate
 
 @synthesize window = _window;
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
+@synthesize dataBase;
+@synthesize productArray;
+@synthesize producerArray;
+@synthesize categoryArray;
+@synthesize producerElements;
+@synthesize categoryElements;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSManagedObjectContext *context = [self managedObjectContext];
+//    NSManagedObjectContext *context = [self managedObjectContext];
 //    Products *product = [NSEntityDescription
 //                                      insertNewObjectForEntityForName:@"Products"
 //                                      inManagedObjectContext:context];
 //    product.name = @"Kosher App";
 //    product.kosher = 0;
-    NSError *error;
-    if(![context save:&error]) {
-        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-    }
+//    NSError *error;
+//    if(![context save:&error]) {
+//        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+//    }
     
     //Test listing all FailedBankInfos from the store
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription
-                                   entityForName:@"Products" inManagedObjectContext:context];
-    [fetchRequest setEntity:entity];
-    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-    for (NSManagedObject *info in fetchedObjects) {
-        NSLog(@"Name: %@", [info valueForKey:@"name"]);
-        NSLog(@"Kosher: %@", [info valueForKey:@"kosher"]);
-    }
+//    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+//    NSEntityDescription *entity = [NSEntityDescription
+//                                   entityForName:@"Products" inManagedObjectContext:context];
+//    [fetchRequest setEntity:entity];
+//    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+//    for (NSManagedObject *info in fetchedObjects) {
+//        NSLog(@"Name: %@", [info valueForKey:@"name"]);
+//        NSLog(@"Kosher: %@", [info valueForKey:@"kosher"]);
+//    }
     // Override point for customization after application launch.
 //    NSLog(@"Before UINavigationController");
 //    UITabBarController *tabController = (UITabBarController *) self.window.ro		
 //    NSLog(@"Before ProductViewController");
-    MainViewController *controller = self.window.rootViewController;
-    controller.managedObject = self.managedObjectContext;
+//    MainViewController *controller = self.window.rootViewController;
+//    controller.managedObject = self.managedObjectContext;
     
 //    ProductViewController *controller = (ProductViewController *) tabController.vie
 //    NSLog(@"Before Controller");
 //    controller.managedObjectContext = self.managedObjectContext;
+    
+    
+    dispatch_async(kBgQueue, ^{
+        NSData* data = [NSData dataWithContentsOfURL:kosherListURL];
+        [self performSelectorOnMainThread:@selector(fetchedData:) withObject:data waitUntilDone:YES];
+    });
     return YES;
+}
+
+- (void)fetchedData:(NSData *)responseData {
+    //parse out the json data
+    NSError* error;
+    NSArray *array = [NSJSONSerialization 
+                          JSONObjectWithData:responseData //1
+                          
+                          options:kNilOptions 
+                          error:&error];
+    
+    NSDictionary *json = [array objectAtIndex:0];
+    
+    //NSLog(@"after serialization...: %@", json);
+    dataBase = [json objectForKey:@"products"]; //2
+    NSDictionary* data = [json objectForKey:@"products"];
+    NSMutableArray* category = [data valueForKeyPath:@"@distinctUnionOfObjects.category"];
+    NSMutableArray* producer = [data valueForKeyPath:@"@distinctUnionOfObjects.producer"];
+    NSSortDescriptor *descriptor =
+    [[NSSortDescriptor alloc] initWithKey:@"name"
+                              ascending:YES 
+                              selector:@selector(localizedCaseInsensitiveCompare:)];
+    NSArray *descriptors = [NSArray arrayWithObject:descriptor];
+    productArray = [dataBase sortedArrayUsingDescriptors:descriptors];
+    categoryArray = [category sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    producerArray = [producer sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    NSLog(@"Values for Key Category: %@", categoryArray);
+    NSLog(@"Values for Key Producer: %@", producerArray);    
+    
+    //generate Dictionary for Producer and Category
+    int numberOfProducts = [dataBase count];
+    int numberOfProducer = [producerArray count];
+    int numberOfCategory = [categoryArray count];
+    NSMutableArray* newProducerElements = [[NSMutableArray alloc] initWithCapacity:numberOfProducer];
+    NSMutableArray* newCategoryElements = [[NSMutableArray alloc] initWithCapacity:numberOfCategory];
+    
+    for (int i=0; i<numberOfCategory; i++) {
+        NSMutableArray* array =[[NSMutableArray alloc]init ];
+        [newCategoryElements addObject:array];
+    }
+    categoryElements = newCategoryElements;
+    
+    
+    for (int i=0; i<numberOfProducer; i++) {
+        NSMutableArray* array =[[NSMutableArray alloc]init ];
+        [newProducerElements addObject:array];
+    }
+    producerElements = newProducerElements;
+    
+    //for each element in dataBase
+    NSDictionary* product;
+    for(int i=0; i<numberOfProducts; i++){
+        product = [dataBase objectAtIndex:i];
+    
+        //Add to Producer Array
+        NSString *producerProduct = [product objectForKey:@"producer"];
+        for(int j=0; j < numberOfProducer; j++){
+            NSString *producerName = [producerArray objectAtIndex:j];
+            if([producerProduct isEqualToString:producerName]){
+                NSMutableArray *array = [producerElements objectAtIndex:j];
+                [array addObject:product];
+            }
+
+        }
+        
+        //Add to category array
+        NSString *categoryProduct = [product objectForKey:@"category"];
+        //        NSLog(@"Producer: %@", producer);
+        for(int j=0; j < numberOfCategory; j++){
+            NSString *categoryName = [categoryArray objectAtIndex:j];
+            //        NSLog(@"Compare name: %@ vs %@", producerName, producerProduct);
+            if([categoryProduct isEqualToString:categoryName]){
+                NSMutableArray *array = [categoryElements objectAtIndex:j];
+                [array addObject:product];
+            }            
+        }     
+    }    
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application

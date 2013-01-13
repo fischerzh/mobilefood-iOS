@@ -2,12 +2,12 @@
 //  ViewController.h
 //  Mobile Food
 //
-//  Created by Lion User on 15.10.12.
+//  Created by Lion User on 07.12.12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UINavigationController
 
 @end

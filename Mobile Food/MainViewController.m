@@ -7,29 +7,20 @@
 //
 
 #import "MainViewController.h"
-#import "ProducerViewController.h"
-#import "ProductViewController.h"
-#import "CategoriesViewController.h"
-#import "FavoritesViewController.h"
+#import "AppDelegate.h"
+#import "CategoryTableViewController.h"
+#import "TableViewController.h"
+#import "CategoryViewController.h"
 
 @interface MainViewController ()
-- (IBAction)switchToScanner:(id)sender;
-- (IBAction)switchToProducts:(id)sender;
-- (IBAction)switchToProducer:(id)sender;
-- (IBAction)switchToCategories:(id)sender;
-- (IBAction)switchToFavorites:(id)sender;
-
 
 @end
 
 @implementation MainViewController
 
-@synthesize managedObject;
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Home";
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -44,30 +35,25 @@
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
-- (IBAction)switchToScanner:(id)sender {
-    UINavigationController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"Scanner"];
-    [self presentModalViewController:controller animated:NO];
-}
-
-- (IBAction)switchToProducts:(id)sender {
-    ProductViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"Product"];
-    [self presentViewController:controller animated:NO completion:NULL];
-    controller.managedObjectContext = self.managedObject;
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    if ([[segue identifier] isEqualToString:@"showProducts"]) {
+        NSDictionary* object = [appDelegate dataBase];
+        [[segue destinationViewController] setDetailItem:object];
+    }else if ([[segue identifier] isEqualToString:@"showProducer"]) {
+        NSDictionary* object = [appDelegate producerArray];
+        NSDictionary* objectElements = [appDelegate producerElements];
+        [[segue destinationViewController] setDetailItem:objectElements];
+        [[segue destinationViewController] setDetailItemDescriptions:object];
+    }else if ([[segue identifier] isEqualToString:@"showCategory"]) {
+        NSDictionary* object = [appDelegate categoryArray];
+        NSDictionary* objectElements = [appDelegate categoryElements];
+        [[segue destinationViewController] setDetailItem:objectElements];
+        [[segue destinationViewController] setDetailItemDescriptions:object];
+    }
     
 }
 
-- (IBAction)switchToProducer:(id)sender {
-    UINavigationController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"Producer"];
-    [self presentViewController:controller animated:NO completion:NULL];
-}
 
-- (IBAction)switchToCategories:(id)sender {
-    UINavigationController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"Categories"];
-    [self presentModalViewController:controller animated:NO];
-}
-
-- (IBAction)switchToFavorites:(id)sender {
-    UINavigationController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"Favorites"];
-    [self presentModalViewController:controller animated:NO];
-}
 @end

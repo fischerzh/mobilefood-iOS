@@ -15,6 +15,12 @@
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@property (readonly, strong, nonatomic) NSArray *dataBase;
+@property (readonly, strong, nonatomic) NSArray *productArray;
+@property (readonly, strong, nonatomic) NSArray *producerArray;
+@property (readonly, strong, nonatomic) NSArray *producerElements;
+@property (readonly, strong, nonatomic) NSArray *categoryElements;
+@property (readonly, strong, nonatomic) NSArray *categoryArray;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;

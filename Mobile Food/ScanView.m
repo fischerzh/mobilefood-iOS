@@ -9,7 +9,6 @@
 #import "ScanView.h"
 
 @interface ScanView ()
--(IBAction)switchToHome:(id)sender;
 
 @end
 
@@ -28,8 +27,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    UIBarButtonItem *back = [[UIBarButtonItem alloc] initWithTitle:@"Home" style:UIBarButtonItemStyleBordered target:self action:@selector(switchToHome:)];
-    self.navigationItem.leftBarButtonItem = back;
 }
 
 - (void)viewDidUnload
@@ -43,10 +40,6 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
--(IBAction)switchToHome:(id)sender{
-    UINavigationController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"Home"];
-    [self presentModalViewController:controller animated:NO];
-}
 
 @synthesize resultImage, resultText;
 
