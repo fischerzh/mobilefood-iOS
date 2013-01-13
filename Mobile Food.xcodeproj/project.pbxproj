@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE38AAD31671827600E1CA5C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE38AAD21671827600E1CA5C /* ViewController.m */; };
+		CE38AAD716718ABA00E1CA5C /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE38AAD616718ABA00E1CA5C /* TableViewController.m */; };
+		CE38AB171672A4BE00E1CA5C /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE38AB161672A4BE00E1CA5C /* DetailViewController.m */; };
 		CE59B9E3162CBBA30086A36E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE59B9E2162CBBA30086A36E /* UIKit.framework */; };
 		CE59B9E5162CBBA30086A36E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE59B9E4162CBBA30086A36E /* Foundation.framework */; };
 		CE59B9E7162CBBA30086A36E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE59B9E6162CBBA30086A36E /* CoreGraphics.framework */; };
@@ -15,11 +18,12 @@
 		CE59B9F3162CBBA30086A36E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE59B9F2162CBBA30086A36E /* AppDelegate.m */; };
 		CE59B9F6162CBBA30086A36E /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE59B9F4162CBBA30086A36E /* MainStoryboard.storyboard */; };
 		CE59B9F9162CBBA30086A36E /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE59B9F8162CBBA30086A36E /* MainViewController.m */; };
+		CE5AD45D1667BADD0010F5EF /* communities.json in Resources */ = {isa = PBXBuildFile; fileRef = CE5AD45C1667BADD0010F5EF /* communities.json */; };
 		CE73899A1655CF6B003AE3DC /* ProducerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7389991655CF6B003AE3DC /* ProducerViewController.m */; };
 		CE73899D1655CF81003AE3DC /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE73899C1655CF81003AE3DC /* FavoritesViewController.m */; };
 		CE7389A01655CF93003AE3DC /* CategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE73899F1655CF93003AE3DC /* CategoriesViewController.m */; };
-		CE7389A31655DDA5003AE3DC /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7389A21655DDA4003AE3DC /* TableViewController.m */; };
 		CE7389A61655E375003AE3DC /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7389A51655E375003AE3DC /* ScanViewController.m */; };
+		CE7B845B167A1283005B5A3E /* CategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7B845A167A1283005B5A3E /* CategoryViewController.m */; };
 		CE7F438116439A4800FA2ED5 /* Products.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7F438016439A4800FA2ED5 /* Products.m */; };
 		CE7F43841643A81C00FA2ED5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE7F43831643A81C00FA2ED5 /* CoreData.framework */; };
 		CE9DB7B1162D33BE00D2D214 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE9DB7AF162D33BE00D2D214 /* DataModel.xcdatamodeld */; };
@@ -27,7 +31,6 @@
 		CE9DB7D6162D5B5B00D2D214 /* zbar-back.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9DB7D1162D5B5B00D2D214 /* zbar-back.png */; };
 		CE9DB7D7162D5B5B00D2D214 /* zbar-help.html in Resources */ = {isa = PBXBuildFile; fileRef = CE9DB7D2162D5B5B00D2D214 /* zbar-help.html */; };
 		CE9DB7D8162D5B5B00D2D214 /* zbar-helpicons.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9DB7D3162D5B5B00D2D214 /* zbar-helpicons.png */; };
-		CE9DB7D9162D5B5B00D2D214 /* zbar-samples.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9DB7D4162D5B5B00D2D214 /* zbar-samples.png */; };
 		CEAEE920164EDD42007D74E6 /* ProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAEE91F164EDD42007D74E6 /* ProductViewController.m */; };
 		CEBC0A07162D8341002359C2 /* ScanView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBC0A06162D8341002359C2 /* ScanView.m */; };
 		CEBC0A0D162D89E7002359C2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEBC0A08162D89E7002359C2 /* AVFoundation.framework */; };
@@ -38,6 +41,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE38AAD11671827600E1CA5C /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		CE38AAD21671827600E1CA5C /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		CE38AAD516718ABA00E1CA5C /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableViewController.h; path = ../TableViewController.h; sourceTree = "<group>"; };
+		CE38AAD616718ABA00E1CA5C /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableViewController.m; path = ../TableViewController.m; sourceTree = "<group>"; };
+		CE38AB151672A4BE00E1CA5C /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		CE38AB161672A4BE00E1CA5C /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		CE38AB181672B8F900E1CA5C /* Mobile Food.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Mobile Food.entitlements"; sourceTree = "<group>"; };
 		CE59B9DE162CBBA30086A36E /* Mobile Food.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mobile Food.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE59B9E2162CBBA30086A36E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CE59B9E4162CBBA30086A36E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -51,16 +61,17 @@
 		CE59B9F5162CBBA30086A36E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		CE59B9F7162CBBA30086A36E /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		CE59B9F8162CBBA30086A36E /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		CE5AD45C1667BADD0010F5EF /* communities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = communities.json; sourceTree = "<group>"; };
 		CE7389981655CF6B003AE3DC /* ProducerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProducerViewController.h; sourceTree = "<group>"; };
 		CE7389991655CF6B003AE3DC /* ProducerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProducerViewController.m; sourceTree = "<group>"; };
 		CE73899B1655CF81003AE3DC /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
 		CE73899C1655CF81003AE3DC /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
 		CE73899E1655CF93003AE3DC /* CategoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesViewController.h; sourceTree = "<group>"; };
 		CE73899F1655CF93003AE3DC /* CategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesViewController.m; sourceTree = "<group>"; };
-		CE7389A11655DDA4003AE3DC /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
-		CE7389A21655DDA4003AE3DC /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		CE7389A41655E375003AE3DC /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanViewController.h; sourceTree = "<group>"; };
 		CE7389A51655E375003AE3DC /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
+		CE7B8459167A1283005B5A3E /* CategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoryViewController.h; path = ../CategoryViewController.h; sourceTree = "<group>"; };
+		CE7B845A167A1283005B5A3E /* CategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoryViewController.m; path = ../CategoryViewController.m; sourceTree = "<group>"; };
 		CE7F437F16439A4800FA2ED5 /* Products.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Products.h; sourceTree = "<group>"; };
 		CE7F438016439A4800FA2ED5 /* Products.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Products.m; sourceTree = "<group>"; };
 		CE7F43831643A81C00FA2ED5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -89,7 +100,6 @@
 		CE9DB7D1162D5B5B00D2D214 /* zbar-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-back.png"; sourceTree = "<group>"; };
 		CE9DB7D2162D5B5B00D2D214 /* zbar-help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "zbar-help.html"; sourceTree = "<group>"; };
 		CE9DB7D3162D5B5B00D2D214 /* zbar-helpicons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-helpicons.png"; sourceTree = "<group>"; };
-		CE9DB7D4162D5B5B00D2D214 /* zbar-samples.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-samples.png"; sourceTree = "<group>"; };
 		CEAEE91E164EDD42007D74E6 /* ProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductViewController.h; sourceTree = "<group>"; };
 		CEAEE91F164EDD42007D74E6 /* ProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductViewController.m; sourceTree = "<group>"; };
 		CEBC0A05162D8341002359C2 /* ScanView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanView.h; sourceTree = "<group>"; };
@@ -159,13 +169,20 @@
 		CE59B9E8162CBBA30086A36E /* Mobile Food */ = {
 			isa = PBXGroup;
 			children = (
+				CE7B8459167A1283005B5A3E /* CategoryViewController.h */,
+				CE7B845A167A1283005B5A3E /* CategoryViewController.m */,
+				CE38AB181672B8F900E1CA5C /* Mobile Food.entitlements */,
+				CE38AB151672A4BE00E1CA5C /* DetailViewController.h */,
+				CE38AB161672A4BE00E1CA5C /* DetailViewController.m */,
+				CE38AAD516718ABA00E1CA5C /* TableViewController.h */,
+				CE38AAD616718ABA00E1CA5C /* TableViewController.m */,
 				CE59B9F1162CBBA30086A36E /* AppDelegate.h */,
 				CE59B9F2162CBBA30086A36E /* AppDelegate.m */,
 				CE59B9F4162CBBA30086A36E /* MainStoryboard.storyboard */,
 				CE7389981655CF6B003AE3DC /* ProducerViewController.h */,
 				CE7389991655CF6B003AE3DC /* ProducerViewController.m */,
-				CE7389A11655DDA4003AE3DC /* TableViewController.h */,
-				CE7389A21655DDA4003AE3DC /* TableViewController.m */,
+				CE38AAD11671827600E1CA5C /* ViewController.h */,
+				CE38AAD21671827600E1CA5C /* ViewController.m */,
 				CE73899B1655CF81003AE3DC /* FavoritesViewController.h */,
 				CE73899C1655CF81003AE3DC /* FavoritesViewController.m */,
 				CE73899E1655CF93003AE3DC /* CategoriesViewController.h */,
@@ -182,6 +199,7 @@
 				CE7389A41655E375003AE3DC /* ScanViewController.h */,
 				CE7389A51655E375003AE3DC /* ScanViewController.m */,
 				CEBC0A06162D8341002359C2 /* ScanView.m */,
+				CE5AD45C1667BADD0010F5EF /* communities.json */,
 			);
 			path = "Mobile Food";
 			sourceTree = "<group>";
@@ -256,7 +274,6 @@
 				CE9DB7D1162D5B5B00D2D214 /* zbar-back.png */,
 				CE9DB7D2162D5B5B00D2D214 /* zbar-help.html */,
 				CE9DB7D3162D5B5B00D2D214 /* zbar-helpicons.png */,
-				CE9DB7D4162D5B5B00D2D214 /* zbar-samples.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -316,7 +333,7 @@
 				CE9DB7D6162D5B5B00D2D214 /* zbar-back.png in Resources */,
 				CE9DB7D7162D5B5B00D2D214 /* zbar-help.html in Resources */,
 				CE9DB7D8162D5B5B00D2D214 /* zbar-helpicons.png in Resources */,
-				CE9DB7D9162D5B5B00D2D214 /* zbar-samples.png in Resources */,
+				CE5AD45D1667BADD0010F5EF /* communities.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,8 +354,11 @@
 				CE73899A1655CF6B003AE3DC /* ProducerViewController.m in Sources */,
 				CE73899D1655CF81003AE3DC /* FavoritesViewController.m in Sources */,
 				CE7389A01655CF93003AE3DC /* CategoriesViewController.m in Sources */,
-				CE7389A31655DDA5003AE3DC /* TableViewController.m in Sources */,
 				CE7389A61655E375003AE3DC /* ScanViewController.m in Sources */,
+				CE38AAD31671827600E1CA5C /* ViewController.m in Sources */,
+				CE38AAD716718ABA00E1CA5C /* TableViewController.m in Sources */,
+				CE38AB171672A4BE00E1CA5C /* DetailViewController.m in Sources */,
+				CE7B845B167A1283005B5A3E /* CategoryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,7 +390,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Pascal Muther (V87JR83AWD)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Pascal Muther (V87JR83AWD)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -385,6 +406,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -395,7 +418,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Pascal Muther (V87JR83AWD)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Pascal Muther (V87JR83AWD)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -404,6 +428,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -412,15 +438,21 @@
 		CE59B9FD162CBBA30086A36E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_ENTITLEMENTS[sdk=iphoneos5.1]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Pascal Muther (V87JR83AWD)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Pascal Muther (V87JR83AWD)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Mobile Food/Mobile Food-Prefix.pch";
 				INFOPLIST_FILE = "Mobile Food/Mobile Food-Info.plist";
+				INSTALL_PATH = "";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ZBarSDK\"",
 					"\"/Volumes/VMware Shared Folders/Downloads/Mobile Food/ZBarSDK\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -428,15 +460,20 @@
 		CE59B9FE162CBBA30086A36E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Pascal Muther (V87JR83AWD)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Pascal Muther (V87JR83AWD)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Mobile Food/Mobile Food-Prefix.pch";
 				INFOPLIST_FILE = "Mobile Food/Mobile Food-Info.plist";
+				INSTALL_PATH = "";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ZBarSDK\"",
 					"\"/Volumes/VMware Shared Folders/Downloads/Mobile Food/ZBarSDK\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -451,7 +488,7 @@
 				CE59B9FB162CBBA30086A36E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		CE59B9FC162CBBA30086A36E /* Build configuration list for PBXNativeTarget "Mobile Food" */ = {
 			isa = XCConfigurationList;
@@ -460,7 +497,7 @@
 				CE59B9FE162CBBA30086A36E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 
