@@ -39,18 +39,14 @@
 {
     AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     if ([[segue identifier] isEqualToString:@"showProducts"]) {
-        NSDictionary* object = [appDelegate dataBase];
+        NSDictionary* object = [appDelegate productArray];
         [[segue destinationViewController] setDetailItem:object];
     }else if ([[segue identifier] isEqualToString:@"showProducer"]) {
         NSDictionary* object = [appDelegate producerArray];
-        NSDictionary* objectElements = [appDelegate producerElements];
-        [[segue destinationViewController] setDetailItem:objectElements];
-        [[segue destinationViewController] setDetailItemDescriptions:object];
+        [[segue destinationViewController] setDetailItem:object];
     }else if ([[segue identifier] isEqualToString:@"showCategory"]) {
         NSDictionary* object = [appDelegate categoryArray];
-        NSDictionary* objectElements = [appDelegate categoryElements];
-        [[segue destinationViewController] setDetailItem:objectElements];
-        [[segue destinationViewController] setDetailItemDescriptions:object];
+        [[segue destinationViewController] setDetailItem:object];
     }
     
 }

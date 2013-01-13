@@ -81,19 +81,39 @@
     
     //NSLog(@"after serialization...: %@", json);
     dataBase = [json objectForKey:@"products"]; //2
-    NSDictionary* data = [json objectForKey:@"products"];
-    NSMutableArray* category = [data valueForKeyPath:@"@distinctUnionOfObjects.category"];
-    NSMutableArray* producer = [data valueForKeyPath:@"@distinctUnionOfObjects.producer"];
     NSSortDescriptor *descriptor =
     [[NSSortDescriptor alloc] initWithKey:@"name"
                               ascending:YES 
                               selector:@selector(localizedCaseInsensitiveCompare:)];
     NSArray *descriptors = [NSArray arrayWithObject:descriptor];
     productArray = [dataBase sortedArrayUsingDescriptors:descriptors];
-    categoryArray = [category sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-    producerArray = [producer sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-    NSLog(@"Values for Key Category: %@", categoryArray);
-    NSLog(@"Values for Key Producer: %@", producerArray);    
+    categoryArray = [self createCategoryDictionary:productArray];
+    producerArray = [self createProducerDictionary:productArray];
+    
+//    NSMutableArray* categoryDictionary = [[NSMutableArray alloc] init];
+//    for (int i=0; i<[categoryArray count]; i++) {
+//        NSMutableArray* keys = [[NSMutableArray alloc] initWithCapacity: 2];
+//        [keys addObject:@"name"];
+//        [keys addObject:@"products"];
+//        NSMutableArray* values = [[NSMutableArray alloc] initWithCapacity:2];
+//        
+//        NSPredicate *resultPredicate = [NSPredicate
+//                                        predicateWithFormat:@"category contains[cd] %@",[categoryArray objectAtIndex:i]];
+//        
+//        [values addObject:[categoryArray objectAtIndex:i]];
+//        [values addObject:[dataBase filteredArrayUsingPredicate:resultPredicate]];
+//        
+//        NSMutableDictionary* newDictionary = [NSMutableDictionary dictionaryWithObjects:values forKeys:keys];
+//        
+//        
+//        NSLog(@"New CategoryDict: %@", newDictionary);
+//        
+//        
+//        [categoryDictionary addObject:newDictionary];
+//    }
+//    
+//    
+//    NSLog(@"All producer Dict: %@ End Category", categoryDictionary);
     
     //generate Dictionary for Producer and Category
     int numberOfProducts = [dataBase count];
@@ -143,6 +163,63 @@
             }            
         }     
     }    
+}
+
+- (NSArray *)createCategoryDictionary:(NSArray *)data
+{    
+    NSMutableArray* values = [data valueForKeyPath:@"@distinctUnionOfObjects.category"];
+    NSArray* categoriesArray = [values sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    
+    NSMutableArray* categoryDictionary = [[NSMutableArray alloc] init];
+    for (int i=0; i<[categoriesArray count]; i++) {
+        NSMutableArray* keys = [[NSMutableArray alloc] initWithCapacity: 2];
+        [keys addObject:@"name"];
+        [keys addObject:@"products"];
+        NSMutableArray* values = [[NSMutableArray alloc] initWithCapacity:2];
+        
+        NSPredicate *resultPredicate = [NSPredicate
+                                        predicateWithFormat:@"category contains[cd] %@",[categoriesArray objectAtIndex:i]];
+        
+        [values addObject:[categoriesArray objectAtIndex:i]];
+        [values addObject:[data filteredArrayUsingPredicate:resultPredicate]];
+        NSLog(@"Result predicate: %@", resultPredicate);
+        NSLog(@"data: %@", [data filteredArrayUsingPredicate:resultPredicate]);
+        
+        NSMutableDictionary* newDictionary = [NSMutableDictionary dictionaryWithObjects:values forKeys:keys];
+        
+        [categoryDictionary addObject:newDictionary];
+    }
+    
+    
+    NSLog(@"All producer Dict: %@ End Category", categoryDictionary);
+    return categoryDictionary;
+}
+
+- (NSArray *)createProducerDictionary:(NSArray *)data
+{    
+    NSMutableArray* values = [data valueForKeyPath:@"@distinctUnionOfObjects.producer"];
+    NSArray* producersArray = [values sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    
+    NSMutableArray* producerDictionary = [[NSMutableArray alloc] init];
+    for (int i=0; i<[producersArray count]; i++) {
+        NSMutableArray* keys = [[NSMutableArray alloc] initWithCapacity: 2];
+        [keys addObject:@"name"];
+        [keys addObject:@"products"];
+        NSMutableArray* values = [[NSMutableArray alloc] initWithCapacity:2];
+        
+        NSPredicate *resultPredicate = [NSPredicate
+                                        predicateWithFormat:@"producer contains[cd] %@",[producersArray objectAtIndex:i]];
+        
+        [values addObject:[producersArray objectAtIndex:i]];
+        [values addObject:[data filteredArrayUsingPredicate:resultPredicate]];
+        NSLog(@"Result predicate: %@", resultPredicate);
+        NSLog(@"data: %@", [data filteredArrayUsingPredicate:resultPredicate]);
+        
+        NSMutableDictionary* newDictionary = [NSMutableDictionary dictionaryWithObjects:values forKeys:keys];
+        
+        [producerDictionary addObject:newDictionary];
+    }
+    return producerDictionary;
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
