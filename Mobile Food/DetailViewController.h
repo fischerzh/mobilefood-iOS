@@ -13,7 +13,13 @@
     IBOutlet UILabel* producer;
     IBOutlet UILabel* category;
     IBOutlet UILabel* ean;
-    IBOutlet UITextView* ingredients;
+    IBOutlet UILabel* packaging;
+    IBOutlet UILabel* controller;
+    IBOutlet UILabel* comment;
+    IBOutlet UILabel* verteiler;
+    IBOutlet UITextView* contents;
+    IBOutlet UIImageView* parve;
+    IBOutlet UIImageView* chalavakum;
 }
 
 @property (strong, nonatomic) id detailItem;

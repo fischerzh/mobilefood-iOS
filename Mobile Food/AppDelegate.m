@@ -11,7 +11,7 @@
 #import "MainViewController.h"
 
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-#define kosherListURL [NSURL URLWithString:@"http://www.uitiwg.ch/Produkt_Live.json"] //"http://www.uitiwg.ch/products_contents.json"] //"http://api.kivaws.org/v1/loans/search.json?status=fundraising"] //
+#define kosherListURL [NSURL URLWithString:@"http://46.163.77.113:8080/SKoscher/JSON/ICZ%20Zuerich.json"] //"http://www.uitiwg.ch/products_contents.json"] //"http://api.kivaws.org/v1/loans/search.json?status=fundraising"] //
 
 @implementation AppDelegate
 
@@ -23,48 +23,22 @@
 @synthesize productArray;
 @synthesize producerArray;
 @synthesize categoryArray;
-@synthesize producerElements;
-@synthesize categoryElements;
+@synthesize favoriteArray;
+@synthesize favoriteIds;
+@synthesize favoriteUpdate;
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//    NSManagedObjectContext *context = [self managedObjectContext];
-//    Products *product = [NSEntityDescription
-//                                      insertNewObjectForEntityForName:@"Products"
-//                                      inManagedObjectContext:context];
-//    product.name = @"Kosher App";
-//    product.kosher = 0;
-//    NSError *error;
-//    if(![context save:&error]) {
-//        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-//    }
-    
-    //Test listing all FailedBankInfos from the store
-//    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-//    NSEntityDescription *entity = [NSEntityDescription
-//                                   entityForName:@"Products" inManagedObjectContext:context];
-//    [fetchRequest setEntity:entity];
-//    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-//    for (NSManagedObject *info in fetchedObjects) {
-//        NSLog(@"Name: %@", [info valueForKey:@"name"]);
-//        NSLog(@"Kosher: %@", [info valueForKey:@"kosher"]);
-//    }
-    // Override point for customization after application launch.
-//    NSLog(@"Before UINavigationController");
-//    UITabBarController *tabController = (UITabBarController *) self.window.ro		
-//    NSLog(@"Before ProductViewController");
-//    MainViewController *controller = self.window.rootViewController;
-//    controller.managedObject = self.managedObjectContext;
-    
-//    ProductViewController *controller = (ProductViewController *) tabController.vie
-//    NSLog(@"Before Controller");
-//    controller.managedObjectContext = self.managedObjectContext;
-    
-    
     dispatch_async(kBgQueue, ^{
-        NSString* raw = [NSString stringWithContentsOfURL:kosherListURL];
+        NSError* error;
+        NSString* raw = [NSString stringWithContentsOfURL:kosherListURL encoding:kNilOptions error:&error];
+        if (error) {
+            NSLog(@"Error: %@", error);
+        }
+        NSLog(@"Raw: %@ raw", raw);
         NSData* data = [raw dataUsingEncoding:NSUTF8StringEncoding];
-        NSLog(@"raw data: %@ end rawData", data);
+        NSLog(@"Data: %@ Data",data);
         [self performSelectorOnMainThread:@selector(fetchedData:) withObject:data waitUntilDone:YES];
     });
     return YES;
@@ -72,16 +46,18 @@
 
 - (void)fetchedData:(NSData *)responseData {
     //parse out the json data
-    NSError* error = nil;
+    NSError* error;
     NSDictionary *array = [NSJSONSerialization 
                           JSONObjectWithData:responseData //1
-                          options:kNilOptions 
+                          options:NSUTF8StringEncoding
                           error:&error];
-    NSLog(@"serialized data: %@ end serialize", array);
     if(!error){
         NSLog(@"SerializationError: %@", error);
     }
-    dataBase = [array objectForKey:@"products"]; //2
+    NSDictionary* dict = [(NSArray* )array objectAtIndex:0];
+    NSLog(@"serialized: %@", array);
+    NSLog(@"Keys: %@", [dict allKeys]);
+    dataBase = [dict objectForKey:@"products"]; //2
     NSSortDescriptor *descriptor =
     [[NSSortDescriptor alloc] initWithKey:@"name"
                               ascending:YES 
@@ -90,55 +66,8 @@
     productArray = [dataBase sortedArrayUsingDescriptors:descriptors];
     categoryArray = [self createCategoryDictionary:productArray];
     producerArray = [self createProducerDictionary:productArray];
-    
-    //generate Dictionary for Producer and Category
-    int numberOfProducts = [dataBase count];
-    int numberOfProducer = [producerArray count];
-    int numberOfCategory = [categoryArray count];
-    NSMutableArray* newProducerElements = [[NSMutableArray alloc] initWithCapacity:numberOfProducer];
-    NSMutableArray* newCategoryElements = [[NSMutableArray alloc] initWithCapacity:numberOfCategory];
-    
-    for (int i=0; i<numberOfCategory; i++) {
-        NSMutableArray* array =[[NSMutableArray alloc]init ];
-        [newCategoryElements addObject:array];
-    }
-    categoryElements = newCategoryElements;
-    
-    
-    for (int i=0; i<numberOfProducer; i++) {
-        NSMutableArray* array =[[NSMutableArray alloc]init ];
-        [newProducerElements addObject:array];
-    }
-    producerElements = newProducerElements;
-    
-    //for each element in dataBase
-    NSDictionary* product;
-    for(int i=0; i<numberOfProducts; i++){
-        product = [dataBase objectAtIndex:i];
-    
-        //Add to Producer Array
-        NSString *producerProduct = [product objectForKey:@"producer"];
-        for(int j=0; j < numberOfProducer; j++){
-            NSString *producerName = [producerArray objectAtIndex:j];
-            if([producerProduct isEqualToString:producerName]){
-                NSMutableArray *array = [producerElements objectAtIndex:j];
-                [array addObject:product];
-            }
-
-        }
-        
-        //Add to category array
-        NSString *categoryProduct = [product objectForKey:@"category"];
-        //        NSLog(@"Producer: %@", producer);
-        for(int j=0; j < numberOfCategory; j++){
-            NSString *categoryName = [categoryArray objectAtIndex:j];
-            //        NSLog(@"Compare name: %@ vs %@", producerName, producerProduct);
-            if([categoryProduct isEqualToString:categoryName]){
-                NSMutableArray *array = [categoryElements objectAtIndex:j];
-                [array addObject:product];
-            }            
-        }     
-    }    
+    favoriteArray = [self createFavoriteDictionary:productArray];
+    favoriteUpdate = [[NSMutableArray alloc] initWithArray:favoriteArray];
 }
 
 - (NSArray *)createCategoryDictionary:(NSArray *)data
@@ -158,16 +87,12 @@
         
         [values addObject:[categoriesArray objectAtIndex:i]];
         [values addObject:[data filteredArrayUsingPredicate:resultPredicate]];
-        NSLog(@"Result predicate: %@", resultPredicate);
-        NSLog(@"data: %@", [data filteredArrayUsingPredicate:resultPredicate]);
         
         NSMutableDictionary* newDictionary = [NSMutableDictionary dictionaryWithObjects:values forKeys:keys];
         
         [categoryDictionary addObject:newDictionary];
     }
     
-    
-    NSLog(@"All producer Dict: %@ End Category", categoryDictionary);
     return categoryDictionary;
 }
 
@@ -188,14 +113,38 @@
         
         [values addObject:[producersArray objectAtIndex:i]];
         [values addObject:[data filteredArrayUsingPredicate:resultPredicate]];
-        NSLog(@"Result predicate: %@", resultPredicate);
-        NSLog(@"data: %@", [data filteredArrayUsingPredicate:resultPredicate]);
         
         NSMutableDictionary* newDictionary = [NSMutableDictionary dictionaryWithObjects:values forKeys:keys];
         
         [producerDictionary addObject:newDictionary];
     }
     return producerDictionary;
+}
+
+- (NSMutableArray *)createFavoriteDictionary:(NSArray *)data
+{
+    NSMutableArray* favArray = [[NSMutableArray alloc] init];
+    
+//    if([favoriteIds count]==0)
+//        return favArray;
+    for(NSDictionary* dict in data) {
+        int value = [[dict valueForKey:@"id"] intValue];
+        for(NSNumber* array in favArray){
+            if(value == [array intValue] ){
+                [favArray addObject:dict];
+            }
+        }
+    }
+    return favArray;
+}
+
+- (void)updateFavoriteArray
+{
+    NSLog(@"Favorites Updated");
+    favoriteArray = favoriteUpdate;
+    favoriteUpdate = [[NSMutableArray alloc]initWithArray:favoriteArray];
+    NSLog(@"FavoriteArray: %@ Array", favoriteArray);
+    NSLog(@"FavoriteUpdate: %@ Update", favoriteUpdate);
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application

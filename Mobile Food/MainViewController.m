@@ -38,6 +38,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    [appDelegate updateFavoriteArray];
     if ([[segue identifier] isEqualToString:@"showProducts"]) {
         NSDictionary* object = [appDelegate productArray];
         [[segue destinationViewController] setDetailItem:object];
@@ -46,6 +47,9 @@
         [[segue destinationViewController] setDetailItem:object];
     }else if ([[segue identifier] isEqualToString:@"showCategory"]) {
         NSDictionary* object = [appDelegate categoryArray];
+        [[segue destinationViewController] setDetailItem:object];
+    }else if ([[segue identifier] isEqualToString:@"showFavorites"]) {
+        NSDictionary* object = [appDelegate favoriteArray];
         [[segue destinationViewController] setDetailItem:object];
     }
     

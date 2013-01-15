@@ -37,9 +37,19 @@ if (_detailItem != newDetailItem) {
 if (self.detailItem) {
     name.text = [[self.detailItem valueForKey:@"name"] description];
     producer.text = [[self.detailItem valueForKey:@"producer"] description];
-    ean.text = [NSString stringWithFormat:@"EAN: %@",[[self.detailItem valueForKey:@"ean"]description]];
+    id eanId;
+    if ((eanId = [self.detailItem valueForKey:@"ean"]))
+    ean.text = [NSString stringWithFormat:@"EAN: %@",[eanId description]];
     category.text = [[self.detailItem valueForKey:@"category"] description];
-    ingredients.text = [[self.detailItem valueForKey:@"contents"] description];
+    contents.text = [[self.detailItem valueForKey:@"contents"] description];
+    packaging.text = [[self.detailItem valueForKey:@"packaging"] description];
+    controller.text = [[self.detailItem valueForKey:@"controller"] description];
+    NSString* commentId = [[self.detailItem valueForKey:@"comment"] description];
+    if (![commentId isEqualToString:@"<null>"])
+    comment.text = [commentId description];
+    verteiler.text = [[self.detailItem valueForKey:@"verteiler"] description];
+    parve.image = [UIImage imageNamed:@"OK.png"];
+    chalavakum.image = [UIImage imageNamed:@"NOT.png"];
 }
 }
 

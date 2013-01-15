@@ -18,11 +18,13 @@
 @property (readonly, strong, nonatomic) NSArray *dataBase;
 @property (readonly, strong, nonatomic) NSArray *productArray;
 @property (readonly, strong, nonatomic) NSArray *producerArray;
-@property (readonly, strong, nonatomic) NSArray *producerElements;
-@property (readonly, strong, nonatomic) NSArray *categoryElements;
 @property (readonly, strong, nonatomic) NSArray *categoryArray;
+@property (readonly, strong, nonatomic) NSMutableArray *favoriteArray;
+@property (strong) NSMutableArray *favoriteIds;
+@property (strong) NSMutableArray *favoriteUpdate;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
+- (void)updateFavoriteArray;
 
 @end

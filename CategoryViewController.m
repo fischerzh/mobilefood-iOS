@@ -96,9 +96,6 @@
     }
     
     cell.textLabel.text = [product objectForKey:@"name"];
-    
-    UIButton* favButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
-    cell.accessoryView = favButton;
     return cell;
 }
 

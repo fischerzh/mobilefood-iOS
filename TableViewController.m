@@ -12,7 +12,7 @@
 
 @interface TableViewController ()
 
-@property AppDelegate *appDelegate;
+@property AppDelegate* appDelegate; 
 
 @end
 
@@ -22,9 +22,11 @@
 @synthesize allItems;
 @synthesize searchResults;
 
+@synthesize productList = _productList;
 @synthesize appDelegate;
 
-@synthesize productList = _productList;
+
+
 
 - (void) setDetailItem:(id)productList{
     _productList = productList;
@@ -42,6 +44,8 @@
 
 - (void)viewDidLoad
 {
+    appDelegate  = [[UIApplication sharedApplication] delegate];
+    [appDelegate updateFavoriteArray];
     [super viewDidLoad];
 }
 
@@ -85,17 +89,44 @@
     }else{
         product = [_productList objectAtIndex:indexPath.row];
     }    
-        NSLog(@"Product: %@", _productList);
 
     cell.textLabel.text = [product objectForKey:@"name"];
     cell.detailTextLabel.text = [product objectForKey:@"producer"];
     
     UIButton* favButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
+    [favButton setImage:[UIImage imageNamed:@"Favorite_on.png"] forState:UIControlStateSelected];
+    [favButton setImage:[UIImage imageNamed:@"Favorite_on.png"] forState:UIControlStateHighlighted];
+    [favButton setImage:[UIImage imageNamed:@"Favorite_on.png"] forState:UIControlStateReserved];
+    [favButton setImage:[UIImage imageNamed:@"Favorite_on.png"] forState:UIControlStateApplication];
+    [favButton setImage:[UIImage imageNamed:@"Favorite_on.png"] forState:UIControlStateDisabled];
+    [favButton setImage:[UIImage imageNamed:@"Favorite_off.png"] forState:UIControlStateNormal];
+    favButton.tag = indexPath.row;
+    [favButton addTarget:self action:@selector(favoriteButtonAction:) forControlEvents:UIControlEventTouchDown];
     cell.accessoryView = favButton;
+    if([[appDelegate favoriteArray] containsObject:product]) {
+        [favButton setSelected:TRUE];
+    }
     return cell;
 }
 
+- (IBAction)favoriteButtonAction:(id)sender{
+    UIButton* button = (UIButton*)sender;
+    NSDictionary* product = [_productList objectAtIndex:button.tag];
+    NSMutableArray* favUpdate = [appDelegate favoriteUpdate];
+    NSMutableArray* favIds = [appDelegate favoriteIds];
+    if(button.selected) {//remove from favorites
+        [favUpdate removeObject:product];
+        
+        
+    }else { //add to favorites
+        [favUpdate addObject:product];
+        [[appDelegate favoriteIds]addObject:[product valueForKey:@"id"]];
 
+    }
+    button.selected = !button.selected;
+}
+
+	
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
@@ -108,7 +139,6 @@
             indexPath = [self.tableView indexPathForSelectedRow];
             object = [_productList objectAtIndex:indexPath.row];
         }
-        NSLog(@"Preparefor Seque: %@", object);
         [[segue destinationViewController] setDetailItem:object];
     }
 }

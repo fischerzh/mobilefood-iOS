@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 
 @interface TableViewController : UITableViewController
 @property (strong, nonatomic) IBOutlet UISearchDisplayController *searchDisplayController;
