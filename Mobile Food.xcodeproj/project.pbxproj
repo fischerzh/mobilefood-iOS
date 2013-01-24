@@ -23,7 +23,6 @@
 		CE60CD1416A364810062EF2B /* Products.m in Sources */ = {isa = PBXBuildFile; fileRef = CE60CD1316A364810062EF2B /* Products.m */; };
 		CE6387E116A6208300698F0C /* NOT.png in Resources */ = {isa = PBXBuildFile; fileRef = CE6387DF16A6208300698F0C /* NOT.png */; };
 		CE6387E216A6208300698F0C /* OK.png in Resources */ = {isa = PBXBuildFile; fileRef = CE6387E016A6208300698F0C /* OK.png */; };
-		CE7389A61655E375003AE3DC /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7389A51655E375003AE3DC /* ScanViewController.m */; };
 		CE7B845B167A1283005B5A3E /* CategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7B845A167A1283005B5A3E /* CategoryViewController.m */; };
 		CE7F43841643A81C00FA2ED5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE7F43831643A81C00FA2ED5 /* CoreData.framework */; };
 		CE9DB7B1162D33BE00D2D214 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE9DB7AF162D33BE00D2D214 /* DataModel.xcdatamodeld */; };
@@ -64,8 +63,7 @@
 		CE60CD1316A364810062EF2B /* Products.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Products.m; sourceTree = "<group>"; };
 		CE6387DF16A6208300698F0C /* NOT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NOT.png; sourceTree = "<group>"; };
 		CE6387E016A6208300698F0C /* OK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OK.png; sourceTree = "<group>"; };
-		CE7389A41655E375003AE3DC /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanViewController.h; sourceTree = "<group>"; };
-		CE7389A51655E375003AE3DC /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
+		CE6387E716B0A42E00698F0C /* ScanView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanView.h; sourceTree = "<group>"; };
 		CE7B8459167A1283005B5A3E /* CategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoryViewController.h; path = ../CategoryViewController.h; sourceTree = "<group>"; };
 		CE7B845A167A1283005B5A3E /* CategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoryViewController.m; path = ../CategoryViewController.m; sourceTree = "<group>"; };
 		CE7F43831643A81C00FA2ED5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -94,7 +92,6 @@
 		CE9DB7D1162D5B5B00D2D214 /* zbar-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-back.png"; sourceTree = "<group>"; };
 		CE9DB7D2162D5B5B00D2D214 /* zbar-help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "zbar-help.html"; sourceTree = "<group>"; };
 		CE9DB7D3162D5B5B00D2D214 /* zbar-helpicons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-helpicons.png"; sourceTree = "<group>"; };
-		CEBC0A05162D8341002359C2 /* ScanView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanView.h; sourceTree = "<group>"; };
 		CEBC0A06162D8341002359C2 /* ScanView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanView.m; sourceTree = "<group>"; };
 		CEBC0A08162D89E7002359C2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		CEBC0A09162D89E7002359C2 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -181,9 +178,7 @@
 				CE59B9F7162CBBA30086A36E /* MainViewController.h */,
 				CE59B9F8162CBBA30086A36E /* MainViewController.m */,
 				CE59B9E9162CBBA30086A36E /* Supporting Files */,
-				CEBC0A05162D8341002359C2 /* ScanView.h */,
-				CE7389A41655E375003AE3DC /* ScanViewController.h */,
-				CE7389A51655E375003AE3DC /* ScanViewController.m */,
+				CE6387E716B0A42E00698F0C /* ScanView.h */,
 				CEBC0A06162D8341002359C2 /* ScanView.m */,
 				CE5AD45C1667BADD0010F5EF /* communities.json */,
 			);
@@ -338,7 +333,6 @@
 				CE59B9F9162CBBA30086A36E /* MainViewController.m in Sources */,
 				CE9DB7B1162D33BE00D2D214 /* DataModel.xcdatamodeld in Sources */,
 				CEBC0A07162D8341002359C2 /* ScanView.m in Sources */,
-				CE7389A61655E375003AE3DC /* ScanViewController.m in Sources */,
 				CE38AAD716718ABA00E1CA5C /* TableViewController.m in Sources */,
 				CE38AB171672A4BE00E1CA5C /* DetailViewController.m in Sources */,
 				CE7B845B167A1283005B5A3E /* CategoryViewController.m in Sources */,

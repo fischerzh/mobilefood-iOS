@@ -13,6 +13,13 @@
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
 #define kosherListURL [NSURL URLWithString:@"http://46.163.77.113:8080/SKoscher/JSON/ICZ%20Zuerich.json"] //"http://www.uitiwg.ch/products_contents.json"] //"http://api.kivaws.org/v1/loans/search.json?status=fundraising"] //
 
+@interface AppDelegate()
+
+@property NSString *productsPath;
+@property NSString *favoritesPath;
+
+@end
+
 @implementation AppDelegate
 
 @synthesize window = _window;
@@ -26,21 +33,33 @@
 @synthesize favoriteArray;
 @synthesize favoriteIds;
 @synthesize favoriteUpdate;
+@synthesize productsPath;
+@synthesize favoritesPath;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSArray *paths =  NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    productsPath = [[paths objectAtIndex:0]stringByAppendingPathComponent:@"products.json"];
+    favoritesPath = [[paths objectAtIndex:0]stringByAppendingPathComponent:@"favorites"];
     dispatch_async(kBgQueue, ^{
         NSError* error;
         NSString* raw = [NSString stringWithContentsOfURL:kosherListURL encoding:kNilOptions error:&error];
         if (error) {
             NSLog(@"Error: %@", error);
         }
-        NSLog(@"Raw: %@ raw", raw);
+        if(raw == nil) {
+            raw = [NSString stringWithContentsOfFile:productsPath encoding:NSUTF8StringEncoding error:nil];
+        }else{
+            [raw writeToFile:productsPath atomically:YES encoding:NSUTF8StringEncoding error:nil]; 
+        }
         NSData* data = [raw dataUsingEncoding:NSUTF8StringEncoding];
-        NSLog(@"Data: %@ Data",data);
         [self performSelectorOnMainThread:@selector(fetchedData:) withObject:data waitUntilDone:YES];
     });
+    favoriteIds = [[NSMutableArray alloc] initWithContentsOfFile:favoritesPath];
+    if (favoriteIds== nil) {
+        favoriteIds = [[NSMutableArray alloc]init];
+    }
     return YES;
 }
 
@@ -55,8 +74,6 @@
         NSLog(@"SerializationError: %@", error);
     }
     NSDictionary* dict = [(NSArray* )array objectAtIndex:0];
-    NSLog(@"serialized: %@", array);
-    NSLog(@"Keys: %@", [dict allKeys]);
     dataBase = [dict objectForKey:@"products"]; //2
     NSSortDescriptor *descriptor =
     [[NSSortDescriptor alloc] initWithKey:@"name"
@@ -68,6 +85,9 @@
     producerArray = [self createProducerDictionary:productArray];
     favoriteArray = [self createFavoriteDictionary:productArray];
     favoriteUpdate = [[NSMutableArray alloc] initWithArray:favoriteArray];
+    
+    NSLog(@"%@", [[NSDictionary alloc]initWithContentsOfFile:productsPath]);
+    
 }
 
 - (NSArray *)createCategoryDictionary:(NSArray *)data
@@ -125,11 +145,11 @@
 {
     NSMutableArray* favArray = [[NSMutableArray alloc] init];
     
-//    if([favoriteIds count]==0)
-//        return favArray;
+    if([favoriteIds count]==0)
+        return favArray;
     for(NSDictionary* dict in data) {
         int value = [[dict valueForKey:@"id"] intValue];
-        for(NSNumber* array in favArray){
+        for(NSNumber* array in favoriteIds){
             if(value == [array intValue] ){
                 [favArray addObject:dict];
             }
@@ -143,8 +163,8 @@
     NSLog(@"Favorites Updated");
     favoriteArray = favoriteUpdate;
     favoriteUpdate = [[NSMutableArray alloc]initWithArray:favoriteArray];
-    NSLog(@"FavoriteArray: %@ Array", favoriteArray);
-    NSLog(@"FavoriteUpdate: %@ Update", favoriteUpdate);
+    [favoriteIds writeToFile:favoritesPath atomically:YES];
+    NSLog(@"check: %@", [[NSArray alloc]initWithContentsOfFile:favoritesPath]);
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -155,6 +175,8 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
+    [favoriteIds writeToFile:favoritesPath atomically:YES];
+    NSLog(@"enter background");
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
@@ -171,7 +193,9 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [productArray writeToFile:productsPath atomically:YES];
+    [favoriteIds writeToFile:favoritesPath atomically:YES];
+    NSLog(@"Terminate");
 }
 
 #pragma mark - Core Data stack

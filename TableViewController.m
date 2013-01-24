@@ -114,13 +114,22 @@
     NSDictionary* product = [_productList objectAtIndex:button.tag];
     NSMutableArray* favUpdate = [appDelegate favoriteUpdate];
     NSMutableArray* favIds = [appDelegate favoriteIds];
+    int idValue = [[product valueForKey:@"id"] intValue];
     if(button.selected) {//remove from favorites
         [favUpdate removeObject:product];
-        
-        
+        for (NSNumber *num in favIds) {
+            if([num intValue] == idValue){
+                [favIds removeObject:num];
+                break;
+            }
+        }
     }else { //add to favorites
         [favUpdate addObject:product];
-        [[appDelegate favoriteIds]addObject:[product valueForKey:@"id"]];
+        NSNumber *num = [NSNumber numberWithInt:idValue];
+        NSLog(@"%@", num);
+        [favIds addObject:num];
+        NSLog(@"%@",[product valueForKey:@"id"]);
+        NSLog(@"Safed Ids: %@", favIds);
 
     }
     button.selected = !button.selected;

@@ -7,6 +7,7 @@
 //
 
 #import "ScanView.h"
+#import <UIKit/UIKit.h>
 
 @interface ScanView ()
 
@@ -83,6 +84,11 @@
     
     // ADD: dismiss the controller (NB dismiss from the *reader*!)
     [reader dismissModalViewControllerAnimated: YES];
+    
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Product found" message:symbol.data delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:@"abbrechen", nil];
+    
+    [message setBackgroundColor: [UIColor redColor]];
+    [message show];
 }
 
 - (void) dealloc

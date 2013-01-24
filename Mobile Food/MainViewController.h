@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZBarSDK.h"
 
 @interface MainViewController : UIViewController
+- (IBAction)scanButtonTapped;
 
 @end

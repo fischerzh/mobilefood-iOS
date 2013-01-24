@@ -5,6 +5,9 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Favorites" syncable="YES">
+        <attribute name="number" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
     <entity name="Products" representedClassName="Products" syncable="YES">
         <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="chavalakum" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -21,5 +24,6 @@
     <elements>
         <element name="Communities" positionX="-5006" positionY="-1260" width="128" height="90"/>
         <element name="Products" positionX="-4860" positionY="-1269" width="128" height="135"/>
+        <element name="Favorites" positionX="-4959" positionY="-999" width="128" height="60"/>
     </elements>
 </model>
