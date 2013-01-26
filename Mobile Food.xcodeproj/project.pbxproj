@@ -23,6 +23,7 @@
 		CE60CD1416A364810062EF2B /* Products.m in Sources */ = {isa = PBXBuildFile; fileRef = CE60CD1316A364810062EF2B /* Products.m */; };
 		CE6387E116A6208300698F0C /* NOT.png in Resources */ = {isa = PBXBuildFile; fileRef = CE6387DF16A6208300698F0C /* NOT.png */; };
 		CE6387E216A6208300698F0C /* OK.png in Resources */ = {isa = PBXBuildFile; fileRef = CE6387E016A6208300698F0C /* OK.png */; };
+		CE77546A16B2DDFB0029868C /* Data.json in Resources */ = {isa = PBXBuildFile; fileRef = CE77546916B2DDFB0029868C /* Data.json */; };
 		CE7B845B167A1283005B5A3E /* CategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7B845A167A1283005B5A3E /* CategoryViewController.m */; };
 		CE7F43841643A81C00FA2ED5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE7F43831643A81C00FA2ED5 /* CoreData.framework */; };
 		CE9DB7B1162D33BE00D2D214 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE9DB7AF162D33BE00D2D214 /* DataModel.xcdatamodeld */; };
@@ -64,6 +65,7 @@
 		CE6387DF16A6208300698F0C /* NOT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NOT.png; sourceTree = "<group>"; };
 		CE6387E016A6208300698F0C /* OK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OK.png; sourceTree = "<group>"; };
 		CE6387E716B0A42E00698F0C /* ScanView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanView.h; sourceTree = "<group>"; };
+		CE77546916B2DDFB0029868C /* Data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Data.json; sourceTree = "<group>"; };
 		CE7B8459167A1283005B5A3E /* CategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoryViewController.h; path = ../CategoryViewController.h; sourceTree = "<group>"; };
 		CE7B845A167A1283005B5A3E /* CategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoryViewController.m; path = ../CategoryViewController.m; sourceTree = "<group>"; };
 		CE7F43831643A81C00FA2ED5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -181,6 +183,7 @@
 				CE6387E716B0A42E00698F0C /* ScanView.h */,
 				CEBC0A06162D8341002359C2 /* ScanView.m */,
 				CE5AD45C1667BADD0010F5EF /* communities.json */,
+				CE77546916B2DDFB0029868C /* Data.json */,
 			);
 			path = "Mobile Food";
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				CE26E28916A5948500C5561F /* Favorite_off.png in Resources */,
 				CE6387E116A6208300698F0C /* NOT.png in Resources */,
 				CE6387E216A6208300698F0C /* OK.png in Resources */,
+				CE77546A16B2DDFB0029868C /* Data.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

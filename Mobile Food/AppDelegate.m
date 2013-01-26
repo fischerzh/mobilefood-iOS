@@ -44,7 +44,9 @@
     favoritesPath = [[paths objectAtIndex:0]stringByAppendingPathComponent:@"favorites"];
     dispatch_async(kBgQueue, ^{
         NSError* error;
-        NSString* raw = [NSString stringWithContentsOfURL:kosherListURL encoding:kNilOptions error:&error];
+//        NSString* raw = [NSString stringWithContentsOfURL:kosherListURL encoding:kNilOptions error:&error];
+        NSString* filePath = [[NSBundle mainBundle]	pathForResource:@"Data" ofType:@"json"];
+        NSString* raw = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
         if (error) {
             NSLog(@"Error: %@", error);
         }
@@ -55,6 +57,7 @@
         }
         NSData* data = [raw dataUsingEncoding:NSUTF8StringEncoding];
         [self performSelectorOnMainThread:@selector(fetchedData:) withObject:data waitUntilDone:YES];
+        NSLog(@"%@", data);
     });
     favoriteIds = [[NSMutableArray alloc] initWithContentsOfFile:favoritesPath];
     if (favoriteIds== nil) {
@@ -81,12 +84,12 @@
                               selector:@selector(localizedCaseInsensitiveCompare:)];
     NSArray *descriptors = [NSArray arrayWithObject:descriptor];
     productArray = [dataBase sortedArrayUsingDescriptors:descriptors];
+    NSLog(@"products: %@ end products", productArray);
+    
     categoryArray = [self createCategoryDictionary:productArray];
     producerArray = [self createProducerDictionary:productArray];
     favoriteArray = [self createFavoriteDictionary:productArray];
     favoriteUpdate = [[NSMutableArray alloc] initWithArray:favoriteArray];
-    
-    NSLog(@"%@", [[NSDictionary alloc]initWithContentsOfFile:productsPath]);
     
 }
 

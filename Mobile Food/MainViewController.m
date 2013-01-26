@@ -78,6 +78,8 @@
 - (void) imagePickerController: (UIImagePickerController*) reader
  didFinishPickingMediaWithInfo: (NSDictionary*) info
 {
+    
+    
     // ADD: get the decode results
     id<NSFastEnumeration> results =
     [info objectForKey: ZBarReaderControllerResults];
@@ -89,9 +91,28 @@
     // ADD: dismiss the controller (NB dismiss from the *reader*!)
     [reader dismissModalViewControllerAnimated: YES];
     
-    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Product found" message:symbol.data delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:@"abbrechen", nil];
+    AppDelegate *appDelegate  = [[UIApplication sharedApplication] delegate];
+    NSArray *products = [appDelegate productArray];
+    NSMutableArray *resultsArray = [[NSMutableArray alloc] init];
+    for (NSDictionary* dict in products) {
+        NSNumber* object = [dict objectForKey:@"ean"];
+            if ((![object isKindOfClass:[NSNull class]]) && ([[object stringValue] isEqualToString:symbol.data ])){
+                    [resultsArray addObject:dict];
+            }
+    }
     
-    [message setBackgroundColor: [UIColor redColor]];
+    
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Product found" message:symbol.data delegate:nil cancelButtonTitle:@"Abbrechen" otherButtonTitles:@"Details", nil];
+    UIColor *color;
+    int numberOfResults = [resultsArray count];
+    if(numberOfResults == 0){
+        color = [UIColor redColor];
+    }else if (numberOfResults == 1) {
+        color = [UIColor greenColor];
+    }else{ // numberOfResults >= 2
+        color = [UIColor yellowColor];
+    }
+    [message setBackgroundColor: color];
     [message show];
 }
 
