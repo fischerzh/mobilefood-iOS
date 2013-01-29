@@ -48,8 +48,17 @@ if (self.detailItem) {
     if (![commentId isEqualToString:@"<null>"])
     comment.text = [commentId description];
     verteiler.text = [[self.detailItem valueForKey:@"verteiler"] description];
-    parve.image = [UIImage imageNamed:@"OK.png"];
-    chalavakum.image = [UIImage imageNamed:@"NOT.png"];
+    if ([[_detailItem valueForKey:@"chalavakum"] boolValue]==true) {
+        chalavakum.image = [UIImage imageNamed:@"OK.png"];
+    } else {
+        chalavakum.image = [UIImage imageNamed:@"NOT.png"];
+    }
+    if ([[_detailItem valueForKey:@"parve"] boolValue]==true) {
+        parve.image = [UIImage imageNamed:@"OK.png"];
+    } else {
+        parve.image = [UIImage imageNamed:@"NOT.png"];
+    }
+    
 }
 }
 
@@ -70,7 +79,7 @@ self.detailDescriptionLabel = nil;
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
 @end

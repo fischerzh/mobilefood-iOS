@@ -11,6 +11,6 @@
 @interface CategoryViewController : UITableViewController
 
 @property (strong, nonatomic) id detailItem;
-@property (strong, nonatomic) id searchResults;
+@property (strong, nonatomic) NSArray* searchResults;
 
 @end

@@ -20,8 +20,10 @@
 @property (readonly, strong, nonatomic) NSArray *producerArray;
 @property (readonly, strong, nonatomic) NSArray *categoryArray;
 @property (readonly, strong, nonatomic) NSMutableArray *favoriteArray;
+@property (readonly, strong, nonatomic) NSMutableArray *communitiesArray;
 @property (strong) NSMutableArray *favoriteIds;
 @property (strong) NSMutableArray *favoriteUpdate;
+@property (strong, nonatomic) NSURL *kosherListURL;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;

@@ -12,4 +12,6 @@
 @interface MainViewController : UIViewController
 - (IBAction)scanButtonTapped;
 
+@property (nonatomic, copy) NSMutableArray* searchResults;
+
 @end

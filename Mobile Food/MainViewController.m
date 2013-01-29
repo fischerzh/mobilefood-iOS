@@ -11,17 +11,34 @@
 #import "CategoryTableViewController.h"
 #import "TableViewController.h"
 #import "CategoryViewController.h"
+#import "ScanResultViewController.h"
+#import "DetailViewController.h"
+#import "CommunityViewController.h"
 
 @interface MainViewController ()
+
+@property AppDelegate *appDelegate;
 
 @end
 
 @implementation MainViewController
 
+@synthesize searchResults;
+@synthesize appDelegate;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
 	// Do any additional setup after loading the view, typically from a nib.
+    NSArray *paths =  NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString* productsPath = [[paths objectAtIndex:0]stringByAppendingPathComponent:@"products.json"];
+    if(appDelegate.kosherListURL ==nil){
+    TableViewController *community = [[self storyboard] instantiateViewControllerWithIdentifier:@"community"];
+    appDelegate.window.rootViewController = community;
+    [(id)community setDetailItem:[appDelegate communitiesArray]];
+    
+    }
 }
 
 - (void)viewDidUnload
@@ -37,7 +54,6 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     [appDelegate updateFavoriteArray];
     if ([[segue identifier] isEqualToString:@"showProducts"]) {
         NSDictionary* object = [appDelegate productArray];
@@ -51,6 +67,8 @@
     }else if ([[segue identifier] isEqualToString:@"showFavorites"]) {
         NSDictionary* object = [appDelegate favoriteArray];
         [[segue destinationViewController] setDetailItem:object];
+    }else if ([[segue identifier] isEqualToString:@"scanResult"]) {
+        [[segue destinationViewController] setDetailItem:searchResults];
     }
     
 }
@@ -91,29 +109,59 @@
     // ADD: dismiss the controller (NB dismiss from the *reader*!)
     [reader dismissModalViewControllerAnimated: YES];
     
-    AppDelegate *appDelegate  = [[UIApplication sharedApplication] delegate];
     NSArray *products = [appDelegate productArray];
-    NSMutableArray *resultsArray = [[NSMutableArray alloc] init];
+    searchResults = [[NSMutableArray alloc] init];
     for (NSDictionary* dict in products) {
         NSNumber* object = [dict objectForKey:@"ean"];
             if ((![object isKindOfClass:[NSNull class]]) && ([[object stringValue] isEqualToString:symbol.data ])){
-                    [resultsArray addObject:dict];
+                    [searchResults addObject:dict];
             }
     }
     
     
-    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Product found" message:symbol.data delegate:nil cancelButtonTitle:@"Abbrechen" otherButtonTitles:@"Details", nil];
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Produkt gefunden" message:@"Leider kein Treffer" delegate:self cancelButtonTitle:@"Abbrechen" otherButtonTitles:nil, nil];
     UIColor *color;
-    int numberOfResults = [resultsArray count];
+    int numberOfResults = [searchResults count];
     if(numberOfResults == 0){
+        [message setTitle:@"Produkt NICHT gefunden!"];
         color = [UIColor redColor];
     }else if (numberOfResults == 1) {
+        [message setMessage:@"Klicken Sie Details für weitere Informationen."];
+        [message addButtonWithTitle:@"Details"];
         color = [UIColor greenColor];
     }else{ // numberOfResults >= 2
+        [message setTitle:@"Mehrere Produkte gefunden"];
+        [message setMessage:@"Klicken Sie Alle Produkte um alle Treffer anzuzeigen."];
+        [message addButtonWithTitle:@"Alle Produkte"];
         color = [UIColor yellowColor];
     }
     [message setBackgroundColor: color];
     [message show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 0) { //OK
+        NSLog(@"Button O clicked");
+        
+    }else if (buttonIndex == 1) { //Cancel
+        NSLog(@"Button 1 clicked");
+        int numberOfResults = [searchResults count];
+        
+//        [self performSegueWithIdentifier:@"scanResult" sender:self];
+        if(numberOfResults == 0){
+            
+        }else if (numberOfResults == 1) {
+            DetailViewController *resultController =[[self storyboard] instantiateViewControllerWithIdentifier:@"DetailView"];
+            [(id)resultController setDetailItem:[searchResults objectAtIndex:0]];
+            [self.navigationController pushViewController:resultController animated:YES];
+            
+        }else{ // numberOfResults >= 2
+            ScanResultViewController *resultController =[[self storyboard] instantiateViewControllerWithIdentifier:@"ScanResult"];
+            [(id)resultController setDetailItem:searchResults];
+            NSLog(@"%@ MainView", searchResults);
+            [self.navigationController pushViewController:resultController animated:YES];
+        }
+    }
 }
 
 

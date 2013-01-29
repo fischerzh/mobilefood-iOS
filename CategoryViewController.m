@@ -15,14 +15,11 @@
 
 @end
 
-@implementation CategoryViewController{
-    NSArray* searchResults;
-}
+@implementation CategoryViewController
 
 @synthesize appDelegate;
 @synthesize detailItem = _detailItem;
-//@synthesize searchResults = _searchResults;
-
+@synthesize searchResults;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -38,7 +35,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  

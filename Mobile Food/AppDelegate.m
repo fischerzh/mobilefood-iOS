@@ -11,12 +11,14 @@
 #import "MainViewController.h"
 
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-#define kosherListURL [NSURL URLWithString:@"http://46.163.77.113:8080/SKoscher/JSON/ICZ%20Zuerich.json"] //"http://www.uitiwg.ch/products_contents.json"] //"http://api.kivaws.org/v1/loans/search.json?status=fundraising"] //
+//#define kosherListURL [NSURL URLWithString:@"http://46.163.77.113:8080/SKoscher/JSON/ICZ%20Zuerich.json"] //"http://www.uitiwg.ch/products_contents.json"] //"http://api.kivaws.org/v1/loans/search.json?status=fundraising"] //
 
 @interface AppDelegate()
 
 @property NSString *productsPath;
 @property NSString *favoritesPath;
+@property NSString *communityPath;
+@property NSString *kosherPath;
 
 @end
 
@@ -35,6 +37,10 @@
 @synthesize favoriteUpdate;
 @synthesize productsPath;
 @synthesize favoritesPath;
+@synthesize communityPath;
+@synthesize communitiesArray;
+@synthesize kosherPath;
+@synthesize kosherListURL;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -42,6 +48,9 @@
     NSArray *paths =  NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     productsPath = [[paths objectAtIndex:0]stringByAppendingPathComponent:@"products.json"];
     favoritesPath = [[paths objectAtIndex:0]stringByAppendingPathComponent:@"favorites"];
+    kosherPath = [[paths objectAtIndex:0]stringByAppendingPathComponent:@"kosherURL"];
+    communityPath = [[NSBundle mainBundle] pathForResource:@"communities" ofType:@"json"];
+    kosherListURL = [NSURL URLWithString:[NSString stringWithContentsOfFile:kosherPath encoding:NSUTF8StringEncoding error:nil]];
     dispatch_async(kBgQueue, ^{
         NSError* error;
 //        NSString* raw = [NSString stringWithContentsOfURL:kosherListURL encoding:kNilOptions error:&error];
@@ -57,25 +66,41 @@
         }
         NSData* data = [raw dataUsingEncoding:NSUTF8StringEncoding];
         [self performSelectorOnMainThread:@selector(fetchedData:) withObject:data waitUntilDone:YES];
-        NSLog(@"%@", data);
     });
     favoriteIds = [[NSMutableArray alloc] initWithContentsOfFile:favoritesPath];
     if (favoriteIds== nil) {
         favoriteIds = [[NSMutableArray alloc]init];
     }
+    [self setCommunityData];
     return YES;
+}
+
+- (void)setCommunityData {
+    NSData *responseData = [[NSString stringWithContentsOfFile:communityPath encoding:NSUTF8StringEncoding error:nil] dataUsingEncoding:NSUTF8StringEncoding];
+    NSError* error = nil;
+    NSDictionary *communities = [NSJSONSerialization 
+                                 JSONObjectWithData:responseData //1
+                                 options:NSUTF8StringEncoding
+                                 error:&error];
+    if(!error){
+        NSLog(@"SerializationError: %@", error);
+    }
+    NSLog(@"%@", communities);
+    NSDictionary *comDict = [(NSArray *)communities objectAtIndex:0];
+    communitiesArray = [comDict objectForKey:@"communities"];
 }
 
 - (void)fetchedData:(NSData *)responseData {
     //parse out the json data
-    NSError* error;
+    NSError* error = nil;
     NSDictionary *array = [NSJSONSerialization 
                           JSONObjectWithData:responseData //1
                           options:NSUTF8StringEncoding
                           error:&error];
     if(!error){
         NSLog(@"SerializationError: %@", error);
-    }
+    }    
+    
     NSDictionary* dict = [(NSArray* )array objectAtIndex:0];
     dataBase = [dict objectForKey:@"products"]; //2
     NSSortDescriptor *descriptor =
@@ -84,7 +109,6 @@
                               selector:@selector(localizedCaseInsensitiveCompare:)];
     NSArray *descriptors = [NSArray arrayWithObject:descriptor];
     productArray = [dataBase sortedArrayUsingDescriptors:descriptors];
-    NSLog(@"products: %@ end products", productArray);
     
     categoryArray = [self createCategoryDictionary:productArray];
     producerArray = [self createProducerDictionary:productArray];
@@ -163,11 +187,11 @@
 
 - (void)updateFavoriteArray
 {
-    NSLog(@"Favorites Updated");
+//    NSLog(@"Favorites Updated");
     favoriteArray = favoriteUpdate;
     favoriteUpdate = [[NSMutableArray alloc]initWithArray:favoriteArray];
     [favoriteIds writeToFile:favoritesPath atomically:YES];
-    NSLog(@"check: %@", [[NSArray alloc]initWithContentsOfFile:favoritesPath]);
+//    NSLog(@"check: %@", [[NSArray alloc]initWithContentsOfFile:favoritesPath]);
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application

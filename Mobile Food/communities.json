@@ -2,42 +2,42 @@
  {
  "communities": [
  {
- "id": "1",
+ "id": 1,
  "name": "IK Baden",
  "url": "www.uitiwg.ch/products_contents.json"
  },
  {
- "id": "2",
+ "id": 2,
  "name": "IRG Basel",
  "url": "www.uitiwg.ch/products_contents.json"
  },
  {
- "id": "3",
+ "id": 3,
  "name": "IG Basel",
  "url": "www.uitiwg.ch/products_contents.json"
  },
  {
- "id": "4",
+ "id": 4,
  "name": "JG Bern",
  "url": "www.uitiwg.ch/products_contents.json"
  },
  {
- "id": "5",
+ "id": 5,
  "name": "CIL Gèneve",
  "url": "www.uitiwg.ch/products_contents.json"
  },
  {
- "id": "6",
+ "id": 6,
  "name": "IG Winterthur",
  "url": "www.uitiwg.ch/products_contents.json"
  },
  {
- "id": "7",
+ "id": 7,
  "name": "ICZ",
  "url": "www.uitiwg.ch/products_contents.json"
  },
  {
- "id": "8",
+ "id": 8,
  "name": "IRG Zürich",
  "url": "www.uitiwg.ch/products_contents.json"
  }

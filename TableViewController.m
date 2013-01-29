@@ -20,7 +20,7 @@
 @synthesize searchDisplayController;
 @synthesize searchBar;
 @synthesize allItems;
-@synthesize searchResults;
+@synthesize searchResults = _searchResults;
 
 @synthesize productList = _productList;
 @synthesize appDelegate;
@@ -58,7 +58,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
 #pragma mark - Table view data source
@@ -71,7 +71,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if([tableView isEqual:self.searchDisplayController.searchResultsTableView]){
-        return [searchResults count];
+        return [_searchResults count];
     }
     return [_productList count];
 }
@@ -85,7 +85,7 @@
     }
     NSDictionary *product;
     if([tableView isEqual:self.searchDisplayController.searchResultsTableView]){
-        product = [searchResults objectAtIndex:indexPath.row];
+        product = [_searchResults objectAtIndex:indexPath.row];
     }else{
         product = [_productList objectAtIndex:indexPath.row];
     }    
@@ -93,6 +93,13 @@
     cell.textLabel.text = [product objectForKey:@"name"];
     cell.detailTextLabel.text = [product objectForKey:@"producer"];
     
+    UIButton *favButton = [self getFavButton:product];
+    favButton.tag = indexPath.row;
+    cell.accessoryView = favButton;    
+    return cell;
+}
+
+- (UIButton *)getFavButton:(id)product{
     UIButton* favButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
     [favButton setImage:[UIImage imageNamed:@"Favorite_on.png"] forState:UIControlStateSelected];
     [favButton setImage:[UIImage imageNamed:@"Favorite_on.png"] forState:UIControlStateHighlighted];
@@ -100,13 +107,11 @@
     [favButton setImage:[UIImage imageNamed:@"Favorite_on.png"] forState:UIControlStateApplication];
     [favButton setImage:[UIImage imageNamed:@"Favorite_on.png"] forState:UIControlStateDisabled];
     [favButton setImage:[UIImage imageNamed:@"Favorite_off.png"] forState:UIControlStateNormal];
-    favButton.tag = indexPath.row;
     [favButton addTarget:self action:@selector(favoriteButtonAction:) forControlEvents:UIControlEventTouchDown];
-    cell.accessoryView = favButton;
     if([[appDelegate favoriteArray] containsObject:product]) {
         [favButton setSelected:TRUE];
     }
-    return cell;
+    return favButton;
 }
 
 - (IBAction)favoriteButtonAction:(id)sender{
@@ -143,7 +148,7 @@
         NSDictionary *object = nil;
         if([self.searchDisplayController isActive]){
             indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
-            object = [searchResults objectAtIndex:indexPath.row];
+            object = [_searchResults objectAtIndex:indexPath.row];
         } else {
             indexPath = [self.tableView indexPathForSelectedRow];
             object = [_productList objectAtIndex:indexPath.row];
@@ -167,7 +172,6 @@
     NSPredicate *resultPredicate = [NSPredicate
                                     predicateWithFormat:@"name contains[cd] %@",searchText];
     self.searchResults = [_productList filteredArrayUsingPredicate:resultPredicate];
-    NSLog(@"Search Results: %@ EndSearchTable", _productList);
 }
 
 #pragma mark - UISearchDisplayController delegate methods
