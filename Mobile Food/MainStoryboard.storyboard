@@ -340,7 +340,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="vyB-Se-35u" kind="push" id="oRu-WD-PZP"/>
+                                    <segue destination="vyB-Se-35u" kind="push" identifier="setComunity" id="oRu-WD-PZP"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -713,47 +713,6 @@
         <image name="Products.png" width="300" height="300"/>
         <image name="favorite_gross.png" width="300" height="300"/>
     </resources>
-    <classes>
-        <class className="CategoryViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CategoryViewController.h"/>
-        </class>
-        <class className="CommunityViewController" superclassName="TableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CommunityViewController.h"/>
-        </class>
-        <class className="DetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="category" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="chalavakum" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="comment" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="contents" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="controller" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="detailDescriptionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="ean" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="name" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="packaging" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="parve" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="producer" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="verteiler" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="MainViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="scanButtonTapped"/>
-            </relationships>
-        </class>
-        <class className="ScanResultViewController" superclassName="TableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ScanResultViewController.h"/>
-        </class>
-        <class className="TableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TableViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
-                <relationship kind="outlet" name="searchDisplayController" candidateClass="UISearchDisplayController"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -63,4 +63,12 @@
     appDelegate.window.rootViewController = view;
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([[segue identifier] isEqualToString:@"setComunity"]){
+        NSIndexPath *indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
+        NSDictionary *object = [super.productList objectAtIndex:indexPath.row];
+        
+    }
+}
+
 @end

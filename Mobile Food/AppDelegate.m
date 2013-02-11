@@ -75,6 +75,10 @@
     return YES;
 }
 
+-(void)loadProducts{
+    
+}
+
 - (void)setCommunityData {
     NSData *responseData = [[NSString stringWithContentsOfFile:communityPath encoding:NSUTF8StringEncoding error:nil] dataUsingEncoding:NSUTF8StringEncoding];
     NSError* error = nil;

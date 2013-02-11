@@ -35,9 +35,8 @@
     NSString* productsPath = [[paths objectAtIndex:0]stringByAppendingPathComponent:@"products.json"];
     if(appDelegate.kosherListURL ==nil){
     TableViewController *community = [[self storyboard] instantiateViewControllerWithIdentifier:@"community"];
-    appDelegate.window.rootViewController = community;
-    [(id)community setDetailItem:[appDelegate communitiesArray]];
-    
+        [(id)community setDetailItem:[appDelegate communitiesArray]];
+        appDelegate.window.rootViewController = community;
     }
 }
 
@@ -119,14 +118,22 @@
     }
     
     
-    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Produkt gefunden" message:@"Leider kein Treffer" delegate:self cancelButtonTitle:@"Abbrechen" otherButtonTitles:nil, nil];
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:NULL message:NULL delegate:self cancelButtonTitle:@"Abbrechen" otherButtonTitles:nil, nil];
     UIColor *color;
     int numberOfResults = [searchResults count];
     if(numberOfResults == 0){
         [message setTitle:@"Produkt NICHT gefunden!"];
+        [message setMessage:@"Leider kein Treffer"];
         color = [UIColor redColor];
     }else if (numberOfResults == 1) {
-        [message setMessage:@"Klicken Sie Details für weitere Informationen."];
+        NSString *remarq = [[NSString alloc] init];
+        NSString *comment = [[searchResults objectAtIndex:0] valueForKey:@"comment"];
+        NSLog(@"%@", comment);
+        if(comment != NULL){
+            remarq = [[NSString alloc] initWithFormat:@"Bemerkungen:\n%@", comment];
+        }
+        [message setTitle:@"Produkt gefunden"];
+        [message setMessage:remarq];
         [message addButtonWithTitle:@"Details"];
         color = [UIColor greenColor];
     }else{ // numberOfResults >= 2
