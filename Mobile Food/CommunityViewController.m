@@ -8,6 +8,7 @@
 
 #import "CommunityViewController.h"
 #import "MainViewController.h"
+#import "AppDelegate.h"
 
 @interface CommunityViewController ()
 
@@ -57,9 +58,8 @@
     
     NSDictionary *product = [super.productList objectAtIndex:indexPath.row];
     NSString *url = [product objectForKey:@"url"];
-    appDelegate.kosherListURL = [NSURL URLWithString:url];
+    [appDelegate saveKosherListURL:[NSURL URLWithString:url]];
     NSLog(@"%@",appDelegate.kosherListURL);
-    
     appDelegate.window.rootViewController = view;
 }
 

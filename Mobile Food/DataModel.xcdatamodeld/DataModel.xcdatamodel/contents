@@ -10,7 +10,7 @@
     </entity>
     <entity name="Products" representedClassName="Products" syncable="YES">
         <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="chavalakum" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="chalavakum" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="contents" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="controller" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -23,7 +23,7 @@
     </entity>
     <elements>
         <element name="Communities" positionX="-5006" positionY="-1260" width="128" height="90"/>
-        <element name="Products" positionX="-4860" positionY="-1269" width="128" height="135"/>
         <element name="Favorites" positionX="-4959" positionY="-999" width="128" height="60"/>
+        <element name="Products" positionX="-4860" positionY="-1269" width="128" height="210"/>
     </elements>
 </model>

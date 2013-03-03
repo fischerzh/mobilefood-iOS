@@ -91,11 +91,11 @@
     }    
 
     cell.textLabel.text = [product objectForKey:@"name"];
-    cell.detailTextLabel.text = [product objectForKey:@"producer"];
+    cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@ \n%@",[product objectForKey:@"packaging"], [product objectForKey:@"producer"]];
     
     UIButton *favButton = [self getFavButton:product];
     favButton.tag = indexPath.row;
-    cell.accessoryView = favButton;    
+    cell.accessoryView = favButton;
     return cell;
 }
 

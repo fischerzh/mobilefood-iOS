@@ -3,44 +3,54 @@
  "communities": [
  {
  "id": 1,
- "name": "IK Baden",
- "url": "www.uitiwg.ch/products_contents.json"
+ "name": "Israelitische Kultusgemeinde Baden (IK Baden)",
+ "url": "http://46.163.77.113:8080/SKoscher/JSON/IKBaden.json"
  },
  {
  "id": 2,
- "name": "IRG Basel",
- "url": "www.uitiwg.ch/products_contents.json"
+ "name": "Israelitische Gemeinde Basel\n(IG Basel)",
+ "url": "http://46.163.77.113:8080/SKoscher/JSON/IGBasel.json"
  },
  {
  "id": 3,
- "name": "IG Basel",
- "url": "www.uitiwg.ch/products_contents.json"
+ "name": "Israelitische Religionsgesellschaft Basel (IRG Basel)",
+ "url": "http://46.163.77.113:8080/SKoscher/JSON/IRGBasel.json"
  },
  {
  "id": 4,
- "name": "JG Bern",
- "url": "www.uitiwg.ch/products_contents.json"
+ "name": "Jüdische Gemeinde Bern\n(JB Bern)",
+ "url": "http://46.163.77.113:8080/SKoscher/JSON/JGBern.json"
  },
  {
  "id": 5,
- "name": "CIL Gèneve",
- "url": "www.uitiwg.ch/products_contents.json"
+ "name": "Israelitische Kultusgemeinde Endingen (IK Endingen)",
+ "url": "http://46.163.77.113:8080/SKoscher/JSON/IKEndingen.json"
  },
  {
  "id": 6,
- "name": "IG Winterthur",
- "url": "www.uitiwg.ch/products_contents.json"
+ "name": "Communauté Israélite de Genève (CI Genève)",
+ "url": "http://46.163.77.113:8080/SKoscher/JSON/CIGeneve.json"
  },
  {
  "id": 7,
- "name": "ICZ",
- "url": "www.uitiwg.ch/products_contents.json"
+ "name": "Communauté Israélite de Lausanne et du ct de Vaud (CI Lausanne)",
+ "url": "http://46.163.77.113:8080/SKoscher/JSON/CILausanneVaud.json"
  },
- {
+                 {
  "id": 8,
- "name": "IRG Zürich",
- "url": "www.uitiwg.ch/products_contents.json"
- }
+ "name": "Israelitische Gemeinde Winterthur (IG Winterthur)",
+ "url": "http://46.163.77.113:8080/SKoscher/JSON/IGWinterthur.json"
+                 },
+                 {
+                 "id": 9,
+                 "name": "Israelitische Cultusgemeinde Zürich (IC Zürich)",
+                  "url": "http://46.163.77.113:8080/SKoscher/JSON/ICZuerich.json"
+                 },
+                 {
+                 "id": 10,
+                 "name": "Israelitische Religionsgesellschaft Zürich (IRG Zürich)",
+                  "url": "http://46.163.77.113:8080/SKoscher/JSON/IRGZuerich.json"
+                 }
  ]
  }
 ]

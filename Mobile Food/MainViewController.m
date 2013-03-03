@@ -34,9 +34,11 @@
     NSArray *paths =  NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString* productsPath = [[paths objectAtIndex:0]stringByAppendingPathComponent:@"products.json"];
     if(appDelegate.kosherListURL ==nil){
-    TableViewController *community = [[self storyboard] instantiateViewControllerWithIdentifier:@"community"];
+        TableViewController *community = [[self storyboard] instantiateViewControllerWithIdentifier:@"community"];
         [(id)community setDetailItem:[appDelegate communitiesArray]];
         appDelegate.window.rootViewController = community;
+    }else {
+        [appDelegate loadProducts];
     }
 }
 
@@ -111,8 +113,8 @@
     NSArray *products = [appDelegate productArray];
     searchResults = [[NSMutableArray alloc] init];
     for (NSDictionary* dict in products) {
-        NSNumber* object = [dict objectForKey:@"ean"];
-            if ((![object isKindOfClass:[NSNull class]]) && ([[object stringValue] isEqualToString:symbol.data ])){
+        NSString* object = [dict objectForKey:@"ean"];
+            if ((![object isKindOfClass:[NSNull class]]) && ([object isEqualToString:symbol.data ])){
                     [searchResults addObject:dict];
             }
     }
@@ -128,9 +130,16 @@
     }else if (numberOfResults == 1) {
         NSString *remarq = [[NSString alloc] init];
         NSString *comment = [[searchResults objectAtIndex:0] valueForKey:@"comment"];
+        if ([comment isKindOfClass:[NSNull class]]){
+            comment = @" ";
+        }
+        NSString* prodFamComment = [[searchResults objectAtIndex:0] valueForKey:@"prodfamcomment"];
+        if ([prodFamComment isKindOfClass:[NSNull class]]) {
+            prodFamComment = @" ";
+        }
         NSLog(@"%@", comment);
         if(comment != NULL){
-            remarq = [[NSString alloc] initWithFormat:@"Bemerkungen:\n%@", comment];
+            remarq = [[NSString alloc] initWithFormat:@"Bemerkungen Produkt:\n%@\nBemerkungen Produktfamilie:\n%@", comment, prodFamComment];
         }
         [message setTitle:@"Produkt gefunden"];
         [message setMessage:remarq];

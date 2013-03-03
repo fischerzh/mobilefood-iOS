@@ -9,17 +9,49 @@
 #import <UIKit/UIKit.h>
 
 @interface DetailViewController : UIViewController {
-    IBOutlet UILabel* name;
-    IBOutlet UILabel* producer;
-    IBOutlet UILabel* category;
+    IBOutlet UITextView* name;
+    IBOutlet UILabel* nameLine;
+    
+    IBOutlet UILabel* eanTitle;
     IBOutlet UILabel* ean;
+    IBOutlet UILabel* eanLine;
+    
+    IBOutlet UILabel* producerTitle;
+    IBOutlet UITextView* producer;
+    IBOutlet UILabel* producerLine;
+    
+    IBOutlet UILabel* distributorTitle;
+    IBOutlet UILabel* distributor;
+    IBOutlet UILabel* distributorLine;
+    
+    IBOutlet UILabel* categoryTitle;
+    IBOutlet UITextView* category;
+    IBOutlet UILabel* categoryLine;
+    
+    IBOutlet UILabel* packagingTitle;
     IBOutlet UILabel* packaging;
+    IBOutlet UILabel* packagingLine;
+    
+    IBOutlet UILabel* kosherTitle;
+    IBOutlet UILabel* kosherLine;
+    IBOutlet UILabel* kosherLabel;
+    IBOutlet UILabel* kosherImage;
+    IBOutlet UIImageView* parveImage;
+    IBOutlet UIImageView* chalavakumImage;
+    
+    IBOutlet UILabel* commentTitle;
+    IBOutlet UILabel* commentLine;
+    IBOutlet UILabel* commentProduct;
+    IBOutlet UILabel* commentFamily;
+    
+    IBOutlet UILabel* controllerTitle;
+    IBOutlet UILabel* controllerLine;
     IBOutlet UILabel* controller;
-    IBOutlet UILabel* comment;
-    IBOutlet UILabel* verteiler;
+    
+    IBOutlet UILabel* contentsTitle;
+    IBOutlet UILabel* contentsLine;
     IBOutlet UITextView* contents;
-    IBOutlet UIImageView* parve;
-    IBOutlet UIImageView* chalavakum;
+    
 }
 
 @property (strong, nonatomic) id detailItem;

@@ -51,32 +51,44 @@
     kosherPath = [[paths objectAtIndex:0]stringByAppendingPathComponent:@"kosherURL"];
     communityPath = [[NSBundle mainBundle] pathForResource:@"communities" ofType:@"json"];
     kosherListURL = [NSURL URLWithString:[NSString stringWithContentsOfFile:kosherPath encoding:NSUTF8StringEncoding error:nil]];
-    dispatch_async(kBgQueue, ^{
-        NSError* error;
-//        NSString* raw = [NSString stringWithContentsOfURL:kosherListURL encoding:kNilOptions error:&error];
-        NSString* filePath = [[NSBundle mainBundle]	pathForResource:@"Data" ofType:@"json"];
-        NSString* raw = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
-        if (error) {
-            NSLog(@"Error: %@", error);
-        }
-        if(raw == nil) {
-            raw = [NSString stringWithContentsOfFile:productsPath encoding:NSUTF8StringEncoding error:nil];
-        }else{
-            [raw writeToFile:productsPath atomically:YES encoding:NSUTF8StringEncoding error:nil]; 
-        }
-        NSData* data = [raw dataUsingEncoding:NSUTF8StringEncoding];
-        [self performSelectorOnMainThread:@selector(fetchedData:) withObject:data waitUntilDone:YES];
-    });
-    favoriteIds = [[NSMutableArray alloc] initWithContentsOfFile:favoritesPath];
-    if (favoriteIds== nil) {
-        favoriteIds = [[NSMutableArray alloc]init];
-    }
+    NSLog(@"KosherListURL: %@", kosherListURL);
+    
     [self setCommunityData];
     return YES;
 }
 
 -(void)loadProducts{
-    
+    dispatch_async(kBgQueue, ^{
+        NSError* error;
+        NSLog(@"KosherListURL: %@", kosherListURL);
+        NSString* raw = [NSString stringWithContentsOfURL:kosherListURL encoding:NSASCIIStringEncoding error:&error];
+        NSData* rawData = [NSData dataWithContentsOfURL:kosherListURL];
+//        NSLog(@"raw %@ end raw", raw);
+//        NSLog(@"rawdata %@ end rawData", rawData);
+        if (error) {
+            NSLog(@"Error: %@", error);
+        }
+        if(raw == nil) {
+            NSString* filePath = [[NSBundle mainBundle]	pathForResource:@"Data" ofType:@"json"];
+//            raw = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
+            raw = [NSString stringWithContentsOfFile:productsPath encoding:NSUTF8StringEncoding error:nil];
+        }else{
+//            NSLog(@"TODO: WRITE PRODUCT TO FILE");
+            [raw writeToFile:productsPath atomically:YES encoding:NSUTF8StringEncoding error:nil]; 
+        }
+        NSData* data = [raw dataUsingEncoding:NSUTF8StringEncoding];
+//        NSLog(@"data %@ end data");
+        if (data != nil) {
+            [self performSelectorOnMainThread:@selector(fetchedData:) withObject:data waitUntilDone:YES];
+        } else {
+            UIAlertView* noDataAlert = [[UIAlertView alloc] initWithTitle:@"Verbindungsfehler" message:@"Es konnte keine Verbindung zum Server aufgebaut werden. Überprüfen Sie Ihre Internetverbindung und starten Sie die App neu." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [noDataAlert show];
+        }
+    });
+    favoriteIds = [[NSMutableArray alloc] initWithContentsOfFile:favoritesPath];
+    if (favoriteIds== nil) {
+        favoriteIds = [[NSMutableArray alloc]init];
+    }
 }
 
 - (void)setCommunityData {
@@ -89,7 +101,6 @@
     if(!error){
         NSLog(@"SerializationError: %@", error);
     }
-    NSLog(@"%@", communities);
     NSDictionary *comDict = [(NSArray *)communities objectAtIndex:0];
     communitiesArray = [comDict objectForKey:@"communities"];
 }
@@ -104,7 +115,7 @@
     if(!error){
         NSLog(@"SerializationError: %@", error);
     }    
-    
+    NSLog(@"Array %@ end array", array);
     NSDictionary* dict = [(NSArray* )array objectAtIndex:0];
     dataBase = [dict objectForKey:@"products"]; //2
     NSSortDescriptor *descriptor =
@@ -308,6 +319,11 @@
 - (NSURL *)applicationDocumentsDirectory
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+}
+
+- (void)saveKosherListURL:(NSURL *)kosherListURL{
+    self.kosherListURL = kosherListURL;
+    [[self.kosherListURL absoluteString] writeToFile:kosherPath atomically:YES encoding:NSUTF8StringEncoding error:nil];
 }
 
 @end

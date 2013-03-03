@@ -28,5 +28,7 @@
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 - (void)updateFavoriteArray;
+- (void)saveKosherListURL:(NSURL*)kosherListURL;
+- (void)loadProducts;
 
 @end
