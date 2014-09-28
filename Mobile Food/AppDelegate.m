@@ -10,9 +10,6 @@
 #import "Products.h"
 #import "MainViewController.h"
 
-#define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-//#define kosherListURL [NSURL URLWithString:@"http://46.163.77.113:8080/SKoscher/JSON/ICZ%20Zuerich.json"] //"http://www.uitiwg.ch/products_contents.json"] //"http://api.kivaws.org/v1/loans/search.json?status=fundraising"] //
-
 @interface AppDelegate()
 
 @property NSString *productsPath;
@@ -58,33 +55,27 @@
 }
 
 -(void)loadProducts{
-    dispatch_async(kBgQueue, ^{
         NSError* error;
-        NSLog(@"KosherListURL: %@", kosherListURL);
-        NSString* raw = [NSString stringWithContentsOfURL:kosherListURL encoding:NSASCIIStringEncoding error:&error];
-        NSData* rawData = [NSData dataWithContentsOfURL:kosherListURL];
-//        NSLog(@"raw %@ end raw", raw);
-//        NSLog(@"rawdata %@ end rawData", rawData);
+        NSString* raw = [NSString stringWithContentsOfURL:kosherListURL encoding:NSUTF8StringEncoding error:&error];
         if (error) {
             NSLog(@"Error: %@", error);
         }
         if(raw == nil) {
-            NSString* filePath = [[NSBundle mainBundle]	pathForResource:@"Data" ofType:@"json"];
-//            raw = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
             raw = [NSString stringWithContentsOfFile:productsPath encoding:NSUTF8StringEncoding error:nil];
+            if (raw != nil){
+                UIAlertView* noDataAlert = [[UIAlertView alloc] initWithTitle:@"Verbindungsfehler" message:@"Es konnte keine Verbindung zum Server aufgebaut werden! Gespeicherte Daten werden geladen." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [noDataAlert show];
+            }
         }else{
-//            NSLog(@"TODO: WRITE PRODUCT TO FILE");
             [raw writeToFile:productsPath atomically:YES encoding:NSUTF8StringEncoding error:nil]; 
         }
         NSData* data = [raw dataUsingEncoding:NSUTF8StringEncoding];
-//        NSLog(@"data %@ end data");
         if (data != nil) {
             [self performSelectorOnMainThread:@selector(fetchedData:) withObject:data waitUntilDone:YES];
         } else {
-            UIAlertView* noDataAlert = [[UIAlertView alloc] initWithTitle:@"Verbindungsfehler" message:@"Es konnte keine Verbindung zum Server aufgebaut werden. Überprüfen Sie Ihre Internetverbindung und starten Sie die App neu." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            UIAlertView* noDataAlert = [[UIAlertView alloc] initWithTitle:@"Verbindungsfehler" message:@"Es konnte keine Verbindung zum Server aufgebaut werden!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [noDataAlert show];
         }
-    });
     favoriteIds = [[NSMutableArray alloc] initWithContentsOfFile:favoritesPath];
     if (favoriteIds== nil) {
         favoriteIds = [[NSMutableArray alloc]init];
@@ -115,7 +106,6 @@
     if(!error){
         NSLog(@"SerializationError: %@", error);
     }    
-    NSLog(@"Array %@ end array", array);
     NSDictionary* dict = [(NSArray* )array objectAtIndex:0];
     dataBase = [dict objectForKey:@"products"]; //2
     NSSortDescriptor *descriptor =

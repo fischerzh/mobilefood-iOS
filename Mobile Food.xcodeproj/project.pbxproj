@@ -30,6 +30,7 @@
 		CE61EBAD16B6F2D400CAE131 /* ScanResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE61EBAC16B6F2D400CAE131 /* ScanResultViewController.m */; };
 		CE6387E116A6208300698F0C /* NOT.png in Resources */ = {isa = PBXBuildFile; fileRef = CE6387DF16A6208300698F0C /* NOT.png */; };
 		CE6387E216A6208300698F0C /* OK.png in Resources */ = {isa = PBXBuildFile; fileRef = CE6387E016A6208300698F0C /* OK.png */; };
+		CE765BEB16E3C1FE00274AD5 /* FavoriteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CE765BEA16E3C1FE00274AD5 /* FavoriteButton.m */; };
 		CE77546A16B2DDFB0029868C /* Data.json in Resources */ = {isa = PBXBuildFile; fileRef = CE77546916B2DDFB0029868C /* Data.json */; };
 		CE7B845B167A1283005B5A3E /* CategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7B845A167A1283005B5A3E /* CategoryViewController.m */; };
 		CE7F43841643A81C00FA2ED5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE7F43831643A81C00FA2ED5 /* CoreData.framework */; };
@@ -38,7 +39,6 @@
 		CE9DB7D6162D5B5B00D2D214 /* zbar-back.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9DB7D1162D5B5B00D2D214 /* zbar-back.png */; };
 		CE9DB7D7162D5B5B00D2D214 /* zbar-help.html in Resources */ = {isa = PBXBuildFile; fileRef = CE9DB7D2162D5B5B00D2D214 /* zbar-help.html */; };
 		CE9DB7D8162D5B5B00D2D214 /* zbar-helpicons.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9DB7D3162D5B5B00D2D214 /* zbar-helpicons.png */; };
-		CEBC0A07162D8341002359C2 /* ScanView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBC0A06162D8341002359C2 /* ScanView.m */; };
 		CEBC0A0D162D89E7002359C2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEBC0A08162D89E7002359C2 /* AVFoundation.framework */; };
 		CEBC0A0E162D89E7002359C2 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEBC0A09162D89E7002359C2 /* CoreMedia.framework */; };
 		CEBC0A0F162D89E7002359C2 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEBC0A0A162D89E7002359C2 /* CoreVideo.framework */; };
@@ -80,7 +80,8 @@
 		CE61EBAC16B6F2D400CAE131 /* ScanResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanResultViewController.m; sourceTree = "<group>"; };
 		CE6387DF16A6208300698F0C /* NOT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NOT.png; sourceTree = "<group>"; };
 		CE6387E016A6208300698F0C /* OK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OK.png; sourceTree = "<group>"; };
-		CE6387E716B0A42E00698F0C /* ScanView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanView.h; sourceTree = "<group>"; };
+		CE765BE916E3C1FE00274AD5 /* FavoriteButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteButton.h; sourceTree = "<group>"; };
+		CE765BEA16E3C1FE00274AD5 /* FavoriteButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteButton.m; sourceTree = "<group>"; };
 		CE77546916B2DDFB0029868C /* Data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Data.json; sourceTree = "<group>"; };
 		CE7B8459167A1283005B5A3E /* CategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoryViewController.h; path = ../CategoryViewController.h; sourceTree = "<group>"; };
 		CE7B845A167A1283005B5A3E /* CategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoryViewController.m; path = ../CategoryViewController.m; sourceTree = "<group>"; };
@@ -110,7 +111,6 @@
 		CE9DB7D1162D5B5B00D2D214 /* zbar-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-back.png"; sourceTree = "<group>"; };
 		CE9DB7D2162D5B5B00D2D214 /* zbar-help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "zbar-help.html"; sourceTree = "<group>"; };
 		CE9DB7D3162D5B5B00D2D214 /* zbar-helpicons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-helpicons.png"; sourceTree = "<group>"; };
-		CEBC0A06162D8341002359C2 /* ScanView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanView.m; sourceTree = "<group>"; };
 		CEBC0A08162D89E7002359C2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		CEBC0A09162D89E7002359C2 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		CEBC0A0A162D89E7002359C2 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -211,12 +211,12 @@
 				CE3DC9AE16B7FF99008AE545 /* CommunityViewController.h */,
 				CE3DC9AF16B7FF99008AE545 /* CommunityViewController.m */,
 				CE59B9E9162CBBA30086A36E /* Supporting Files */,
-				CE6387E716B0A42E00698F0C /* ScanView.h */,
-				CEBC0A06162D8341002359C2 /* ScanView.m */,
 				CE5AD45C1667BADD0010F5EF /* communities.json */,
 				CE77546916B2DDFB0029868C /* Data.json */,
 				CE61EBAB16B6F2D400CAE131 /* ScanResultViewController.h */,
 				CE61EBAC16B6F2D400CAE131 /* ScanResultViewController.m */,
+				CE765BE916E3C1FE00274AD5 /* FavoriteButton.h */,
+				CE765BEA16E3C1FE00274AD5 /* FavoriteButton.m */,
 			);
 			path = "Mobile Food";
 			sourceTree = "<group>";
@@ -374,27 +374,71 @@
 				CE59B9F3162CBBA30086A36E /* AppDelegate.m in Sources */,
 				CE59B9F9162CBBA30086A36E /* MainViewController.m in Sources */,
 				CE9DB7B1162D33BE00D2D214 /* DataModel.xcdatamodeld in Sources */,
-				CEBC0A07162D8341002359C2 /* ScanView.m in Sources */,
 				CE38AAD716718ABA00E1CA5C /* TableViewController.m in Sources */,
 				CE38AB171672A4BE00E1CA5C /* DetailViewController.m in Sources */,
 				CE7B845B167A1283005B5A3E /* CategoryViewController.m in Sources */,
 				CE60CD1416A364810062EF2B /* Products.m in Sources */,
 				CE61EBAD16B6F2D400CAE131 /* ScanResultViewController.m in Sources */,
 				CE3DC9B016B7FF9A008AE545 /* CommunityViewController.m in Sources */,
+				CE765BEB16E3C1FE00274AD5 /* FavoriteButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		CE141FC916E81BE700000CAE /* AppStore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Pascal Muther";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "74A798BB-84AC-4428-AD4C-14984D598436";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = AppStore;
+		};
+		CE141FCA16E81BE700000CAE /* AppStore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Mobile Food/Mobile Food-Prefix.pch";
+				INFOPLIST_FILE = "Mobile Food/Mobile Food-Info.plist";
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ZBarSDK\"",
+					"\"/Volumes/VMware Shared Folders/Downloads/Mobile Food/ZBarSDK\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = AppStore;
+		};
 		CE59B9FA162CBBA30086A36E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Pascal Muther (WWR8RMLGJV)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -409,7 +453,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				PROVISIONING_PROFILE = "75B1D9D2-3974-40EA-BA3D-A07EA3743AAB";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
@@ -421,8 +465,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Pascal Muther (WWR8RMLGJV)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Pascal Muther";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -431,7 +475,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "75B1D9D2-3974-40EA-BA3D-A07EA3743AAB";
+				PROVISIONING_PROFILE = "74A798BB-84AC-4428-AD4C-14984D598436";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -442,8 +486,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				"CODE_SIGN_ENTITLEMENTS[sdk=iphoneos5.1]" = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Pascal Muther (WWR8RMLGJV)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Pascal Muther (WWR8RMLGJV)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Mobile Food/Mobile Food-Prefix.pch";
 				INFOPLIST_FILE = "Mobile Food/Mobile Food-Info.plist";
@@ -454,8 +498,8 @@
 					"\"/Volumes/VMware Shared Folders/Downloads/Mobile Food/ZBarSDK\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "688CBDDA-D428-4767-9F10-B056E2E2EB50";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "688CBDDA-D428-4767-9F10-B056E2E2EB50";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -463,8 +507,8 @@
 		CE59B9FE162CBBA30086A36E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Pascal Muther (WWR8RMLGJV)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Pascal Muther (V87JR83AWD)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Mobile Food/Mobile Food-Prefix.pch";
 				INFOPLIST_FILE = "Mobile Food/Mobile Food-Info.plist";
@@ -475,7 +519,7 @@
 					"\"/Volumes/VMware Shared Folders/Downloads/Mobile Food/ZBarSDK\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "688CBDDA-D428-4767-9F10-B056E2E2EB50";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -489,18 +533,20 @@
 			buildConfigurations = (
 				CE59B9FA162CBBA30086A36E /* Debug */,
 				CE59B9FB162CBBA30086A36E /* Release */,
+				CE141FC916E81BE700000CAE /* AppStore */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		CE59B9FC162CBBA30086A36E /* Build configuration list for PBXNativeTarget "Mobile Food" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CE59B9FD162CBBA30086A36E /* Debug */,
 				CE59B9FE162CBBA30086A36E /* Release */,
+				CE141FCA16E81BE700000CAE /* AppStore */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

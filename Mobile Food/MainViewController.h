@@ -13,5 +13,7 @@
 - (IBAction)scanButtonTapped;
 
 @property (nonatomic, copy) NSMutableArray* searchResults;
+@property (weak, nonatomic) IBOutlet UIView *activityView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end

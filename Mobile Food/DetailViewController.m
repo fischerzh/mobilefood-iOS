@@ -7,6 +7,9 @@
 //
 
 #import "DetailViewController.h"
+#import "FavoriteButton.h"
+
+
 #define jsonKey [NSArray arrayWithObjects:@"name",@"ean",@"producer", @"category", @"packaging", @"kosher", @"comment", @"controller", @"contents",nil]
 #define jsonValues [NSArray arrayWithObjects:@"Name", @"EAN", @"Hersteller", @"Kategorie", @"Verpackung", @"Koscher", @"Bemerkungen", @"Kontrolleur", @"Inhaltsstoffe", nil]
 #define sideDistance 10
@@ -64,10 +67,19 @@ if (self.detailItem) {
     line = [self addBlueLine:tempPosition];
     frame = line.frame;
     frame.size.height = 3;
-    frame.size.width = view.frame.size.width - 2*sideDistance -30;
+    frame.size.width = view.frame.size.width - 2*sideDistance -40;
     line.frame = frame;
     [view insertSubview:line atIndex:0];
     tempPosition += frame.size.height;
+    
+    //Favorite Button
+    CGRect favFrame;
+    favFrame.size.height = 30	;
+    favFrame.size.width = favFrame.size.height;
+    favFrame.origin.y = topDistance;
+    favFrame.origin.x = self.view.frame.size.width - sideDistance - favFrame.size.width;
+    FavoriteButton* favButton = [[FavoriteButton alloc]initWithProduct:favFrame:_detailItem];
+    [view addSubview:favButton];
 
     
     for (int i=1; i < [(NSArray*) jsonKey count]; i++) {
@@ -108,12 +120,12 @@ if (self.detailItem) {
         }else {
             content = [self getContentLabel:tempPosition :value];
         }
-        NSLog(@"%@: Height:%f", title, content.frame.size.height);
         tempPosition += content.frame.size.height;
         [view insertSubview:titleView atIndex:0];
         [view insertSubview:line atIndex:0];
         [view insertSubview:content atIndex:0];
         tempPosition += 2;
+        
         CGSize content = view.contentSize;
         content.height = tempPosition;
         view.contentSize = content;
@@ -142,9 +154,9 @@ if (self.detailItem) {
     UILabel* label = [self getTitleLabel:y :text];
     label.font =[UIFont boldSystemFontOfSize:17];
     CGRect frame = label.frame;
-    frame.size.width = self.view.frame.size.width - 2*sideDistance -30;
+    frame.size.width = self.view.frame.size.width - 2*sideDistance -40;
     label.frame = frame; 
-    CGSize maxLabelSize = CGSizeMake(self.view.frame.size.width - 2*sideDistance -30, 9999);
+    CGSize maxLabelSize = CGSizeMake(self.view.frame.size.width - 2*sideDistance -40, 9999);
     [self resizeLabel:label :maxLabelSize];
     return label;
 }

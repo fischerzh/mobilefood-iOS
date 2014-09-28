@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vyB-Se-35u">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
@@ -177,10 +176,32 @@
                                     <action selector="scanButtonTapped" destination="xnZ-Po-A1V" eventType="touchUpInside" id="t0C-Gv-nqo"/>
                                 </connections>
                             </button>
+                            <view hidden="YES" contentMode="scaleToFill" id="BLb-yP-WDf">
+                                <rect key="frame" x="0.0" y="-44" width="320" height="460"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" style="gray" id="4Ek-MB-aJL">
+                                        <rect key="frame" x="150" y="182" width="20" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </activityIndicatorView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Daten werden geladen..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="hPU-Pp-wzh">
+                                        <rect key="frame" x="55" y="210" width="201" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="XCc-zQ-d1j"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="4Ek-MB-aJL" id="nVf-0M-V5z"/>
+                        <outlet property="activityView" destination="BLb-yP-WDf" id="PmE-sI-3cL"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="293" y="-190"/>
@@ -460,66 +481,6 @@
         <image name="Products.png" width="300" height="300"/>
         <image name="favorite_gross.png" width="300" height="300"/>
     </resources>
-    <classes>
-        <class className="CategoryViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CategoryViewController.h"/>
-        </class>
-        <class className="CommunityViewController" superclassName="TableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CommunityViewController.h"/>
-        </class>
-        <class className="DetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="category" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="categoryLine" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="categoryTitle" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="chalavakumImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="commentFamily" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="commentLine" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="commentProduct" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="commentTitle" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="contents" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="contentsLine" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="contentsTitle" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="controller" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="controllerLine" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="controllerTitle" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="detailDescriptionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="distributor" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="distributorLine" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="distributorTitle" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="ean" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="eanLine" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="eanTitle" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="kosherImage" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="kosherLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="kosherLine" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="kosherTitle" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="name" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="nameLine" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="packaging" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="packagingLine" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="packagingTitle" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="parveImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="producer" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="producerLine" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="producerTitle" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="MainViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="scanButtonTapped"/>
-            </relationships>
-        </class>
-        <class className="TableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TableViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
-                <relationship kind="outlet" name="searchDisplayController" candidateClass="UISearchDisplayController"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

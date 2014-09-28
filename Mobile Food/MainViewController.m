@@ -15,6 +15,8 @@
 #import "DetailViewController.h"
 #import "CommunityViewController.h"
 
+#define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+
 @interface MainViewController ()
 
 @property AppDelegate *appDelegate;
@@ -25,6 +27,8 @@
 
 @synthesize searchResults;
 @synthesize appDelegate;
+@synthesize activityIndicator;
+@synthesize activityView;
 
 - (void)viewDidLoad
 {
@@ -32,18 +36,27 @@
     appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
 	// Do any additional setup after loading the view, typically from a nib.
     NSArray *paths =  NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString* productsPath = [[paths objectAtIndex:0]stringByAppendingPathComponent:@"products.json"];
     if(appDelegate.kosherListURL ==nil){
         TableViewController *community = [[self storyboard] instantiateViewControllerWithIdentifier:@"community"];
-        [(id)community setDetailItem:[appDelegate communitiesArray]];
         appDelegate.window.rootViewController = community;
+        [(id)community setDetailItem:[appDelegate communitiesArray]];
     }else {
+        [self.navigationController.view addSubview:activityView];
+        [activityView setFrame:self.navigationController.view.frame];
+        [activityView setHidden:FALSE];
+        [activityIndicator startAnimating];
+        dispatch_async(kBgQueue, ^{
         [appDelegate loadProducts];
+            [activityView setHidden:TRUE];
+        });
+     
     }
 }
 
 - (void)viewDidUnload
 {
+    [self setActivityView:nil];
+    [self setActivityIndicator:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -91,7 +104,7 @@
     
     // present and release the controller
     [self presentModalViewController: reader
-                            animated: YES];
+                            animated: NO];
 }
 
 - (void) imagePickerController: (UIImagePickerController*) reader
@@ -108,14 +121,15 @@
         break;
     
     // ADD: dismiss the controller (NB dismiss from the *reader*!)
-    [reader dismissModalViewControllerAnimated: YES];
+    [reader dismissModalViewControllerAnimated: NO];
     
     NSArray *products = [appDelegate productArray];
     searchResults = [[NSMutableArray alloc] init];
     for (NSDictionary* dict in products) {
         NSString* object = [dict objectForKey:@"ean"];
-            if ((![object isKindOfClass:[NSNull class]]) && ([object isEqualToString:symbol.data ])){
+            if ((![object isKindOfClass:[NSNull class]]) && ([object rangeOfString:symbol.data].location != NSNotFound)){
                     [searchResults addObject:dict];
+                NSLog(@"fount");
             }
     }
     
@@ -157,10 +171,8 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 0) { //OK
-        NSLog(@"Button O clicked");
         
     }else if (buttonIndex == 1) { //Cancel
-        NSLog(@"Button 1 clicked");
         int numberOfResults = [searchResults count];
         
 //        [self performSegueWithIdentifier:@"scanResult" sender:self];
@@ -174,7 +186,6 @@
         }else{ // numberOfResults >= 2
             ScanResultViewController *resultController =[[self storyboard] instantiateViewControllerWithIdentifier:@"ScanResult"];
             [(id)resultController setDetailItem:searchResults];
-            NSLog(@"%@ MainView", searchResults);
             [self.navigationController pushViewController:resultController animated:YES];
         }
     }

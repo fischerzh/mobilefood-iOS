@@ -9,6 +9,7 @@
 #import "TableViewController.h"
 #import "AppDelegate.h"
 #import "DetailViewController.h"
+#import "FavoriteButton.h"
 
 @interface TableViewController ()
 
@@ -93,53 +94,13 @@
     cell.textLabel.text = [product objectForKey:@"name"];
     cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@ \n%@",[product objectForKey:@"packaging"], [product objectForKey:@"producer"]];
     
-    UIButton *favButton = [self getFavButton:product];
-    favButton.tag = indexPath.row;
+    CGRect favFrame;
+    favFrame.size.height = 30	;
+    favFrame.size.width = favFrame.size.height;
+    UIButton *favButton = [[FavoriteButton alloc] initWithProduct:favFrame :product];
     cell.accessoryView = favButton;
     return cell;
 }
-
-- (UIButton *)getFavButton:(id)product{
-    UIButton* favButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
-    [favButton setImage:[UIImage imageNamed:@"Favorite_on.png"] forState:UIControlStateSelected];
-    [favButton setImage:[UIImage imageNamed:@"Favorite_on.png"] forState:UIControlStateHighlighted];
-    [favButton setImage:[UIImage imageNamed:@"Favorite_on.png"] forState:UIControlStateReserved];
-    [favButton setImage:[UIImage imageNamed:@"Favorite_on.png"] forState:UIControlStateApplication];
-    [favButton setImage:[UIImage imageNamed:@"Favorite_on.png"] forState:UIControlStateDisabled];
-    [favButton setImage:[UIImage imageNamed:@"Favorite_off.png"] forState:UIControlStateNormal];
-    [favButton addTarget:self action:@selector(favoriteButtonAction:) forControlEvents:UIControlEventTouchDown];
-    if([[appDelegate favoriteArray] containsObject:product]) {
-        [favButton setSelected:TRUE];
-    }
-    return favButton;
-}
-
-- (IBAction)favoriteButtonAction:(id)sender{
-    UIButton* button = (UIButton*)sender;
-    NSDictionary* product = [_productList objectAtIndex:button.tag];
-    NSMutableArray* favUpdate = [appDelegate favoriteUpdate];
-    NSMutableArray* favIds = [appDelegate favoriteIds];
-    int idValue = [[product valueForKey:@"id"] intValue];
-    if(button.selected) {//remove from favorites
-        [favUpdate removeObject:product];
-        for (NSNumber *num in favIds) {
-            if([num intValue] == idValue){
-                [favIds removeObject:num];
-                break;
-            }
-        }
-    }else { //add to favorites
-        [favUpdate addObject:product];
-        NSNumber *num = [NSNumber numberWithInt:idValue];
-        NSLog(@"%@", num);
-        [favIds addObject:num];
-        NSLog(@"%@",[product valueForKey:@"id"]);
-        NSLog(@"Safed Ids: %@", favIds);
-
-    }
-    button.selected = !button.selected;
-}
-
 	
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
